@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老银牌银饰 · 今日参考价</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#4FC3F7;--gold2:#81D4FA;--gold3:#0277BD;--bg:#0A1628;--line:rgba(79,195,247,0.22);--text:#E3F2FD;--dim:#7BA7C2;}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;background:var(--bg);color:var(--text);font-family:'Noto Serif SC',serif;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 120% 60% at 50% -5%,rgba(79,195,247,0.12) 0%,transparent 55%),radial-gradient(ellipse 60% 80% at 5% 50%,rgba(79,195,247,0.05) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 95% 50%,rgba(79,195,247,0.05) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.topbar{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:10px 28px;border-bottom:1px solid var(--line);flex-shrink:0;overflow:hidden;}
+.brand-center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:100%;}
+.brand-zh{font-size:28px;font-weight:600;color:var(--gold2);letter-spacing:.12em;text-align:center;white-space:nowrap;line-height:1.2;}
+.brand-sub{display:none;}
+.topright{display:flex;align-items:center;gap:12px;margin-left:auto;position:relative;z-index:2;}
+.fs-btn{position:fixed;top:7px;right:6px;z-index:999;background:transparent;border:1px solid var(--line);color:var(--dim);padding:0px 3px;border-radius:3px;font-size:8px;cursor:pointer;line-height:1.4;transition:all .2s;}
+.fs-btn:hover{border-color:var(--gold);color:var(--gold)}.divline{display:flex;align-items:center;gap:10px;padding:5px 28px;flex-shrink:0;}
+.divline::before,.divline::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--line))}
+.divline::after{background:linear-gradient(to left,transparent,var(--line))}
+.divline-inner{font-size:9px;letter-spacing:.35em;color:var(--dim);white-space:nowrap}
+.grid{flex:1;display:grid;position:relative;z-index:1;grid-template-columns:1fr 1fr;}
+@media(min-width:768px),(orientation:landscape){
+  html,body{height:100%;overflow:hidden;}
+  body{height:100vh;height:100dvh;min-height:0;}
+  .grid{grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;min-height:0;}
+  .col{border-right:none;border-bottom:none;padding:4px 6px 2px;min-height:0;display:flex;flex-direction:column;}
+  .col:not(:nth-child(4n)){box-shadow:inset -1px 0 0 rgba(79,195,247,0.10), inset -2px 0 0 rgba(255,255,255,0.04), inset -3px 0 0 rgba(0,0,0,0.25);}
+  .col:nth-child(-n+4){box-shadow:inset 0 -1px 0 rgba(79,195,247,0.10), inset 0 -2px 0 rgba(255,255,255,0.04), inset 0 -3px 0 rgba(0,0,0,0.25);}
+  .col:not(:nth-child(4n)):nth-child(-n+4){box-shadow:inset -1px 0 0 rgba(79,195,247,0.10), inset -2px 0 0 rgba(255,255,255,0.04), inset -3px 0 0 rgba(0,0,0,0.25), inset 0 -1px 0 rgba(79,195,247,0.10), inset 0 -2px 0 rgba(255,255,255,0.04), inset 0 -3px 0 rgba(0,0,0,0.25);}
+  .chart-area{flex:1;min-height:50px;height:auto;display:flex;flex-direction:column;}
+  .chart-wrap{flex:1;min-height:40px;}
+  .metal-tag{font-size:7px;margin-bottom:0;}
+  .metal-name{font-size:clamp(34px,4.5vw,54px)!important;margin-bottom:0;}
+  .price-label{font-size:7px;margin-bottom:0;}
+  .price-cny{font-size:clamp(34px,4.5vw,56px)!important;}
+  .price-unit{font-size:6px;margin-top:0;}
+  .chg{font-size:7px;margin:1px 0;padding:1px 4px;}
+  .topbar{padding:8px 14px;min-height:48px;}
+  .brand-zh{font-size:36px;letter-spacing:.08em;line-height:1.15;}
+  .brand-sub{display:none;}
+  .divline{padding:1px 14px;}
+  .divline-inner{font-size:6px;}
+  .noticebar{padding:0;font-size:8px;}
+  .notice-wrap{height:14px;line-height:14px;}
+  .bottombar{padding:2px 14px;}
+  .status-wrap,.lupd{font-size:7px;}
+}
+@media(max-width:767px) and (orientation:portrait){
+  .grid{grid-template-columns:1fr 1fr;}
+  .col{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .col:nth-child(2n){border-right:none;}
+  .chart-area{height:140px;flex-shrink:0;}
+  .brand-zh{font-size:20px;font-weight:900;letter-spacing:.04em;white-space:nowrap;}
+  .brand-sub{display:none;}
+  .price-cny{font-size:clamp(32px,8vw,52px)!important;}
+  .metal-name{font-size:clamp(26px,7vw,40px)!important;}
+  .topbar{padding:8px 36px 8px 12px;min-height:0;}
+  .brand-center{text-align:center;width:100%;}
+}
+@media(orientation:landscape) and (max-height:480px){
+  .topbar{padding:6px 10px;min-height:40px;}
+  .brand-zh{font-size:30px;line-height:1.15;}
+  .brand-sub{display:none;}
+  .noticebar{padding:0;font-size:7px;}
+  .notice-wrap{height:12px;line-height:12px;}
+  .divline{padding:0 8px;}
+  .divline-inner{font-size:5px;}
+  .col{padding:1px 3px 1px;}
+  .metal-tag{font-size:5px;}
+  .metal-name{font-size:clamp(24px,4vw,36px)!important;}
+  .price-label{font-size:5px;}
+  .price-cny{font-size:clamp(24px,4.2vw,36px)!important;}
+  .price-unit{font-size:5px;}
+  .chg{font-size:6px;margin:0;padding:0 3px;}
+  .bottombar{padding:1px 8px;}
+  .status-wrap,.lupd{font-size:6px;}
+}
+@media(orientation:landscape) and (max-height:380px){
+  .metal-name{font-size:clamp(20px,3.6vw,26px)!important;}
+  .price-cny{font-size:clamp(20px,3.8vw,26px)!important;}
+  .price-label,.price-unit,.metal-tag{display:none;}
+}
+.col{display:flex;flex-direction:column;align-items:center;padding:12px 16px 8px;position:relative;overflow:hidden;}
+.col::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(to right,transparent,rgba(79,195,247,0.4),transparent);opacity:0;transition:opacity .4s;}
+.col:hover::before{opacity:1}.metal-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.3em;color:var(--dim);margin-bottom:2px;text-transform:uppercase;}
+.metal-name{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(26px,3vw,42px);letter-spacing:.12em;margin-bottom:1px;}
+.metal-name.g{color:#FFD54F}.metal-name.s{color:#E0F7FA}.metal-name.p{color:#B0BEC5}.metal-name.d{color:#FFCCBC}.metal-name.a{color:#FFF176}.metal-name.k{color:#FFCA28}.metal-name.pt{color:#90CAF9}.metal-name.pd{color:#FFAB91}
+.metal-sub{font-size:9px;color:var(--dim);letter-spacing:.2em;margin-bottom:4px}.price-label{font-size:9px;letter-spacing:.15em;color:var(--dim);margin-bottom:2px;text-align:center;}
+.price-cny{font-family:'SimSun','宋体',serif;font-size:clamp(36px,4vw,68px);font-weight:700;line-height:1;transition:color .3s;text-align:center;}
+.price-cny.up{color:#4DCB82}.price-cny.down{color:#E05555}.price-cny.neu{color:var(--text)}
+.price-unit{font-size:9px;color:var(--dim);letter-spacing:.2em;margin-top:2px;text-align:center;}
+.chg{font-family:'JetBrains Mono',monospace;font-size:10px;margin:3px 0 2px;padding:2px 8px;border-radius:3px;letter-spacing:.05em;}
+.chg.up{color:#4DCB82;background:rgba(77,203,130,.1)}.chg.down{color:#E05555;background:rgba(224,85,85,.1)}.chg.neu{color:var(--dim)}
+.chart-area{width:100%;display:flex;flex-direction:column;}.chart-tabs{display:flex;gap:0;margin-bottom:4px;justify-content:center;border:1px solid var(--line);border-radius:6px;overflow:hidden;width:fit-content;align-self:center;}
+.chart-tab{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 7px;color:var(--dim);cursor:pointer;letter-spacing:.05em;transition:all .2s;background:transparent;border:none;border-right:1px solid var(--line);}
+.chart-tab:last-child{border-right:none;}.chart-tab.active{color:#0A1628;background:var(--gold);font-weight:600;}
+.chart-tab:hover:not(.active){color:var(--gold2);background:rgba(79,195,247,.08)}.chart-wrap{flex:1;position:relative;border-radius:6px;overflow:hidden;background:rgba(10,22,40,0.7);border:1px solid rgba(79,195,247,0.10);}
+canvas.chart{position:absolute;inset:0;width:100%;height:100%;}@keyframes fu{0%{background:rgba(77,203,130,.10)}100%{background:transparent}}
+@keyframes fd{0%{background:rgba(224,85,85,.08)}100%{background:transparent}}
+.col.fu{animation:fu .7s ease-out}.col.fd{animation:fd .7s ease-out}
+.bottombar{flex-shrink:0;display:flex;align-items:center;justify-content:flex-start;padding:6px 16px;border-top:1px solid var(--line);position:relative;z-index:2;flex-wrap:nowrap;gap:10px;width:100%;box-sizing:border-box;}
+.status-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);flex-shrink:0;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--dim);flex-shrink:0;cursor:pointer;}
+.dot.live{background:#3DBA6F;box-shadow:0 0 10px #3DBA6F;animation:blink 2s infinite}
+.dot.err{background:#C94040}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.lupd{font-size:10px;color:var(--dim);cursor:pointer;}
+.hidden-trigger{position:fixed;bottom:0;right:0;width:44px;height:44px;z-index:100;cursor:default;}
+.noticebar{display:flex;align-items:center;gap:6px;padding:0;margin:0;background:transparent;border:none;font-size:11px;color:var(--dim);overflow:hidden;flex:1 1 0%;min-width:0;}
+.notice-icon{color:var(--gold);flex-shrink:0;font-size:12px;}.notice-wrap{flex:1 1 0%;overflow:hidden;position:relative;height:20px;min-width:0;line-height:20px;}
+.notice-text{display:inline-block;white-space:nowrap;color:#C62828;letter-spacing:.05em;will-change:transform;font-size:12px;line-height:20px;font-family:'SimSun','宋体',serif;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.pwd-wrap{position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:300;display:none;padding-bottom:10px;}
+.pwd-wrap.show{display:block;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.pwd-input{background:rgba(10,22,40,0.75);border:1px solid rgba(79,195,247,0.22);border-radius:8px;color:rgba(227,242,253,0.5);font-family:'JetBrains Mono',monospace;font-size:13px;padding:7px 18px;outline:none;width:190px;text-align:center;letter-spacing:.25em;backdrop-filter:blur(6px);caret-color:transparent;}
+.pwd-input::placeholder{color:rgba(123,167,194,0.35);font-size:11px;}.premium-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;}
+.premium-overlay.open{display:flex}.premium-panel{background:linear-gradient(135deg,#0A1628 0%,#0D2040 100%);border:1px solid rgba(79,195,247,0.3);border-radius:18px;padding:28px 32px;width:min(760px,95vw);position:relative;max-height:92vh;overflow-y:auto;box-shadow:0 0 60px rgba(79,195,247,0.10);}
+.pp-title{font-size:20px;color:var(--gold);margin-bottom:3px;letter-spacing:.1em;}
+.pp-sub{font-size:10px;color:var(--dim);letter-spacing:.15em;margin-bottom:18px}.pp-close{position:absolute;top:16px;right:20px;background:transparent;border:none;color:var(--dim);font-size:24px;cursor:pointer;}
+.pp-close:hover{color:var(--gold)}.pp-row{display:flex;align-items:stretch;margin-bottom:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(10,22,40,0.6);}
+.pp-metal{padding:10px 14px;width:72px;flex-shrink:0;border-right:1px solid var(--line);text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.pp-metal-name{font-size:14px;font-weight:600}.pp-metal-name.g{color:#FFD54F}.pp-metal-name.s{color:#E0F7FA}.pp-metal-name.p{color:#B0BEC5}.pp-metal-name.d{color:#FFCCBC}.pp-metal-name.a{color:#FFF176}.pp-metal-name.k{color:#FFCA28}.pp-metal-name.pt{color:#90CAF9}.pp-metal-name.pd{color:#FFAB91}
+.pp-metal-sub{font-size:9px;color:var(--dim);letter-spacing:.12em;margin-top:2px}
+.pp-main{flex:1;display:flex;flex-direction:column;}
+.pp-mode-tabs{display:flex;border-bottom:1px solid var(--line);}
+.pp-mode-tab{flex:1;padding:6px 0;font-size:10px;letter-spacing:.15em;text-align:center;cursor:pointer;color:var(--dim);transition:all .2s;font-family:'JetBrains Mono',monospace;background:transparent;border:none;}
+.pp-mode-tab.active{color:var(--gold2);background:rgba(79,195,247,.10)}
+.pp-mode-tab:first-child{border-right:1px solid var(--line);}
+.pp-pct-ctrl,.pp-fixed-ctrl{display:flex;align-items:center;gap:8px;padding:10px 12px;}
+.pp-hidden{display:none}.pp-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:rgba(79,195,247,.08);color:var(--gold);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-family:monospace;user-select:none;}
+.pp-btn:hover{background:rgba(79,195,247,.25);border-color:var(--gold)}
+.pp-btn:active{transform:scale(.88)}.pp-range{flex:1;height:4px;-webkit-appearance:none;appearance:none;border-radius:2px;outline:none;cursor:pointer;}
+.pp-range.g{background:linear-gradient(to right,#0a2040,#FFD54F)}
+.pp-range.s{background:linear-gradient(to right,#0a2040,#E0F7FA)}
+.pp-range.p{background:linear-gradient(to right,#0a2040,#B0BEC5)}
+.pp-range.d{background:linear-gradient(to right,#0a2040,#FFCCBC)}
+.pp-range.a{background:linear-gradient(to right,#0a2040,#FFF176)}
+.pp-range.k{background:linear-gradient(to right,#0a2040,#FFCA28)}
+.pp-range.pt{background:linear-gradient(to right,#0a2040,#90CAF9)}.pp-range.pd{background:linear-gradient(to right,#0a2040,#FFAB91)}.pp-range::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:2px solid #0A1628;cursor:pointer;box-shadow:0 0 6px rgba(79,195,247,.4);}
+.pp-range.g::-webkit-slider-thumb{background:#FFD54F}.pp-range.s::-webkit-slider-thumb{background:#E0F7FA}
+.pp-range.p::-webkit-slider-thumb{background:#B0BEC5}.pp-range.d::-webkit-slider-thumb{background:#FFCCBC}
+.pp-range.a::-webkit-slider-thumb{background:#FFF176}.pp-range.k::-webkit-slider-thumb{background:#FFCA28}
+.pp-range.pt::-webkit-slider-thumb{background:#90CAF9}.pp-range.pd::-webkit-slider-thumb{background:#FFAB91}
+.pp-info{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:2px;padding:8px 14px;min-width:148px;flex-shrink:0;border-left:1px solid var(--line);}
+.pp-val-pct,.pp-val-fix{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;}
+.pp-val-pct.pos,.pp-val-fix.pos{color:#4DCB82}.pp-val-pct.neg,.pp-val-fix.neg{color:#E05555}.pp-val-pct.zero,.pp-val-fix.zero{color:var(--dim)}
+.pp-price-label{font-size:9px;color:var(--dim);letter-spacing:.12em;}.pp-price{font-family:'SimSun','宋体',serif;font-size:19px;color:var(--gold2);}
+.pp-reset{background:rgba(79,195,247,.08);border:1px solid var(--line);color:var(--dim);padding:2px 8px;border-radius:4px;font-size:10px;cursor:pointer;font-family:monospace;margin-top:2px;}
+.pp-reset:hover{color:var(--gold);border-color:var(--gold)}.pp-sync{font-size:10px;text-align:center;margin-top:8px;height:16px;letter-spacing:.1em;font-family:'Noto Serif SC','PingFang SC','Microsoft YaHei',sans-serif;}
+.pp-sync.ok{color:#4DCB82}.pp-sync.err{color:#E05555}.pp-sync.ing{color:var(--gold3)}
+.pp-footer{margin-top:6px;font-size:10px;color:var(--dim);text-align:center;letter-spacing:.12em;}
+
+/* ===== 四品种布局：前4个卡片隐藏（保留DOM，计算与K线不变） ===== */
+.grid>.col:nth-child(-n+4){display:none!important;}
+.grid>.col:nth-child(n+5){box-shadow:none;background:linear-gradient(160deg,rgba(79,195,247,0.06),transparent 55%);}
+.grid>.col:nth-child(n+5):hover{background:linear-gradient(160deg,rgba(79,195,247,0.10),transparent 60%);}
+.grid>.col:nth-child(odd):nth-child(n+5){border-right:1px solid var(--line);}
+.grid>.col:nth-child(-n+6):nth-child(n+5){border-bottom:1px solid var(--line);}
+.grid>.col:nth-child(n+5) .chart-wrap{background:rgba(10,22,40,0.85);}
+@media(min-width:768px),(orientation:landscape){
+  .grid{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+  .grid>.col:nth-child(n+5){padding:8px 24px 6px;}
+  .grid>.col:nth-child(n+5) .price-cny{font-size:clamp(44px,5.2vw,78px)!important;}
+  .grid>.col:nth-child(n+5) .metal-name{font-size:clamp(34px,3.8vw,56px)!important;}
+  .grid>.col:nth-child(n+5) .chart-wrap{min-height:90px;}
+}
+@media(max-width:767px) and (orientation:portrait){
+  html,body{height:auto;min-height:0;}
+  body{min-height:0;}
+  .grid{flex:none;align-content:start;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;}
+  .grid>.col:nth-child(n+5){padding-top:8px;padding-bottom:8px;justify-content:flex-start;}
+  .grid>.col:nth-child(n+5){border-right:none;border-bottom:none;}
+  .grid>.col:nth-child(odd):nth-child(n+5){border-right:1px solid var(--line);}
+  .grid>.col:nth-child(-n+6):nth-child(n+5){border-bottom:1px solid var(--line);}
+}
+
+/* ===== 大盘指数栏 ===== */
+.idxbar{flex-shrink:0;display:grid;grid-template-columns:repeat(4,1fr);width:100%;box-sizing:border-box;border-top:1px solid var(--line);background:rgba(10,22,40,0.6);position:relative;z-index:2;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));}
+.idx{text-align:center;min-width:0;padding:0 2px;}
+.idx+.idx{border-left:1px solid var(--line);}
+.idx-n{font-size:11px;color:var(--text);opacity:.7;line-height:16px;white-space:nowrap;}
+.idx-p{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;line-height:22px;color:#9aa7b8;white-space:nowrap;}
+.idx-c{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:16px;color:#9aa7b8;white-space:nowrap;}
+.idx.up .idx-p,.idx.up .idx-c{color:#F0545A;}
+.idx.dn .idx-p,.idx.dn .idx-c{color:#35C27A;}
+@media(min-width:768px){
+  .idx-n{font-size:14px;line-height:20px;}
+  .idx-p{font-size:24px;line-height:30px;}
+  .idx-c{font-size:14px;line-height:20px;}
+}
+@media(orientation:landscape) and (max-height:480px){
+  .idxbar{padding:1px 6px;}
+  .idx{display:flex;align-items:baseline;justify-content:center;gap:6px;}
+  .idx-n{font-size:9px;line-height:14px;}
+  .idx-p{font-size:11px;line-height:14px;}
+  .idx-c{font-size:9px;line-height:14px;}
+}
+
+/* ===== 手机：状态文字与时间上下叠放，把横向空间让给公告 ===== */
+.st-col{display:flex;align-items:center;gap:6px;}
+@media(max-width:600px){
+  .status-wrap{gap:5px;}
+  .st-col{flex-direction:column;align-items:flex-start;justify-content:center;gap:0;}
+  .st-col #stxt,.st-col .lupd{font-size:9px;line-height:10px;white-space:nowrap;}
+}
+
+/* 休市中：时间看不见，但仍可点击（后台入口是先点圆点、再点时间） */
+.st-col{position:relative;}
+.lupd.off{position:absolute;left:-6px;right:-6px;top:-6px;bottom:-6px;opacity:0;overflow:hidden;}
+
+/* ===== 整条底栏（状态+公告）：很淡的浅黄底，把上方行情区和下方指数栏区分开 ===== */
+.bottombar{background:#FFF9E3;box-shadow:inset 0 -1px 0 rgba(0,0,0,0.08);}
+.bottombar .status-wrap,.bottombar .lupd,.bottombar #stxt{color:#6B5B2A;}
+.bottombar .notice-text{color:#C62828;}
+</style></head><body>
+<div class="topbar">
+  <div class="brand-center"><div class="brand-zh">老银牌银饰 · 今日参考价</div></div>
+  <button class="fs-btn" onclick="toggleFS()" title="全屏">[ ]</button>
+</div>
+<div class="divline"><span class="divline-inner">REAL · TIME · MARKET · DATA</span></div>
+<div class="grid">
+  <div class="col" id="col-gold"><div class="metal-tag">XAU / CNY</div><div class="metal-name g">黄 金</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-gold">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-gold">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('gold','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('gold','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('gold','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('gold','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-gold"></canvas></div></div></div>
+
+
+
+
+<div class="col" id="col-silver">
+
+
+
+
+<div class="metal-tag">XAG / CNY</div>
+
+
+
+
+<div class="metal-name s" onclick="toggleSilver()" style="cursor:pointer;">白 银</div>
+
+
+
+
+
+
+<div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-silver">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-silver">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('silver','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('silver','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('silver','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('silver','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-silver"></canvas></div></div></div>
+  <div class="col" id="col-platinum"><div class="metal-tag">XPT / CNY</div><div class="metal-name p">铂 金</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-platinum">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-platinum">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('platinum','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('platinum','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('platinum','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('platinum','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-platinum"></canvas></div></div></div>
+  <div class="col" id="col-palladium"><div class="metal-tag">XPD / CNY</div><div class="metal-name d">钯 金</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-palladium">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-palladium">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('palladium','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('palladium','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('palladium','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('palladium','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-palladium"></canvas></div></div></div>
+  <div class="col" id="col-au999"><div class="metal-tag">AU999</div><div class="metal-name a">Au999</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-au999">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-au999">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('au999','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('au999','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('au999','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('au999','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-au999"></canvas></div></div></div>
+  <div class="col" id="col-18k"><div class="metal-tag">18K GOLD</div><div class="metal-name k">18K</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-18k">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-18k">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('18k','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('18k','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('18k','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('18k','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-18k"></canvas></div></div></div>
+  <div class="col" id="col-pt950"><div class="metal-tag">PT950</div><div class="metal-name pt">Pt950</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-pt950">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-pt950">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('pt950','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('pt950','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('pt950','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('pt950','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-pt950"></canvas></div></div></div>
+  <div class="col" id="col-pd990"><div class="metal-tag">PD990</div><div class="metal-name pd">Pd990</div><div class="price-label">回收价（元/克）</div><div class="price-cny neu" id="p-pd990">———</div><div class="price-unit">CNY / GRAM</div><div class="chg neu" id="chg-pd990">— —</div><div class="chart-area"><div class="chart-tabs"><div class="chart-tab active" onclick="switchTab('pd990','m15',this)">3分</div><div class="chart-tab" onclick="switchTab('pd990','h1',this)">1时</div><div class="chart-tab" onclick="switchTab('pd990','d1',this)">1日</div><div class="chart-tab" onclick="switchTab('pd990','w1',this)">1周</div></div><div class="chart-wrap"><canvas class="chart" id="cv-pd990"></canvas></div></div></div>
+</div>
+<div class="bottombar">
+  <div class="status-wrap"><div class="dot" id="dot" onclick="triggerStep1()"></div><div class="st-col"><span id="stxt">连接中</span><span class="lupd" id="lupd" onclick="triggerStep2()"></span></div></div>
+  <div class="noticebar" id="noticebar" style="display:none"><span class="notice-icon">📢</span><div class="notice-wrap"><span class="notice-text" id="noticeText"></span></div></div>
+</div>
+<div class="idxbar" id="idxbar"><div class="idx" id="idx-sh000001"><div class="idx-n">上证指数</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sz399001"><div class="idx-n">深证成指</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sz399006"><div class="idx-n">创业板指</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sh000688"><div class="idx-n">科创50</div><div class="idx-p">--</div><div class="idx-c">--</div></div></div>
+<div class="hidden-trigger" onclick="triggerStep1()"></div>
+<div class="pwd-wrap" id="pwdWrap"><input class="pwd-input" id="pwdInput" type="password" placeholder="···" maxlength="20" oninput="checkPwd()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></div>
+<div class="premium-overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="premium-panel">
+    <button class="pp-close" onclick="closePanel()">×</button>
+    <div class="pp-title">溢价调节</div>
+    <div class="pp-sub">各品种独立调节 · 保存后全网同步</div>  <div class="pp-row" style="display:none"><div class="pp-metal"><div class="pp-metal-name g">黄金</div><div class="pp-metal-sub">XAU</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-gold" onclick="setMode('gold','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-gold" onclick="setMode('gold','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-gold"><button class="pp-btn" onclick="stepPct('gold',-0.5)">−</button><input type="range" class="pp-range g" id="sp-gold" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('gold')"><button class="pp-btn" onclick="stepPct('gold',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-gold"><button class="pp-btn" onclick="stepFix('gold',-10)">−</button><input type="range" class="pp-range g" id="sf-gold" min="-500" max="200" step="1" value="0" oninput="onSlideFix('gold')"><button class="pp-btn" onclick="stepFix('gold',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-gold">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-gold">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-gold">--</div><button class="pp-reset" onclick="resetOne('gold')">归零</button></div></div>
+    <div class="pp-row" style="display:none"><div class="pp-metal"><div class="pp-metal-name s">白银</div><div class="pp-metal-sub">XAG</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-silver" onclick="setMode('silver','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-silver" onclick="setMode('silver','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-silver"><button class="pp-btn" onclick="stepPct('silver',-0.5)">−</button><input type="range" class="pp-range s" id="sp-silver" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('silver')"><button class="pp-btn" onclick="stepPct('silver',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-silver"><button class="pp-btn" onclick="stepFix('silver',-0.5)">−</button><input type="range" class="pp-range s" id="sf-silver" min="-50" max="20" step="0.1" value="0" oninput="onSlideFix('silver')"><button class="pp-btn" onclick="stepFix('silver',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-silver">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-silver">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-silver">--</div><button class="pp-reset" onclick="resetOne('silver')">归零</button></div></div>
+    <div class="pp-row" style="display:none"><div class="pp-metal"><div class="pp-metal-name p">铂金</div><div class="pp-metal-sub">XPT</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-platinum" onclick="setMode('platinum','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-platinum" onclick="setMode('platinum','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-platinum"><button class="pp-btn" onclick="stepPct('platinum',-0.5)">−</button><input type="range" class="pp-range p" id="sp-platinum" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('platinum')"><button class="pp-btn" onclick="stepPct('platinum',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-platinum"><button class="pp-btn" onclick="stepFix('platinum',-10)">−</button><input type="range" class="pp-range p" id="sf-platinum" min="-500" max="200" step="1" value="0" oninput="onSlideFix('platinum')"><button class="pp-btn" onclick="stepFix('platinum',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-platinum">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-platinum">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-platinum">--</div><button class="pp-reset" onclick="resetOne('platinum')">归零</button></div></div>
+    <div class="pp-row" style="display:none"><div class="pp-metal"><div class="pp-metal-name d">钯金</div><div class="pp-metal-sub">XPD</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-palladium" onclick="setMode('palladium','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-palladium" onclick="setMode('palladium','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-palladium"><button class="pp-btn" onclick="stepPct('palladium',-0.5)">−</button><input type="range" class="pp-range d" id="sp-palladium" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('palladium')"><button class="pp-btn" onclick="stepPct('palladium',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-palladium"><button class="pp-btn" onclick="stepFix('palladium',-10)">−</button><input type="range" class="pp-range d" id="sf-palladium" min="-500" max="200" step="1" value="0" oninput="onSlideFix('palladium')"><button class="pp-btn" onclick="stepFix('palladium',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-palladium">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-palladium">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-palladium">--</div><button class="pp-reset" onclick="resetOne('palladium')">归零</button></div></div>
+    <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name a">Au999</div><div class="pp-metal-sub">足金</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-au999" onclick="setMode('au999','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-au999" onclick="setMode('au999','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-au999"><button class="pp-btn" onclick="stepPct('au999',-0.5)">−</button><input type="range" class="pp-range a" id="sp-au999" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('au999')"><button class="pp-btn" onclick="stepPct('au999',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-au999"><button class="pp-btn" onclick="stepFix('au999',-10)">−</button><input type="range" class="pp-range a" id="sf-au999" min="-500" max="200" step="1" value="0" oninput="onSlideFix('au999')"><button class="pp-btn" onclick="stepFix('au999',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-au999">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-au999">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-au999">--</div><button class="pp-reset" onclick="resetOne('au999')">归零</button></div></div>
+    <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name k">18K</div><div class="pp-metal-sub">18K金</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-18k" onclick="setMode('18k','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-18k" onclick="setMode('18k','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-18k"><button class="pp-btn" onclick="stepPct('18k',-0.5)">−</button><input type="range" class="pp-range k" id="sp-18k" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('18k')"><button class="pp-btn" onclick="stepPct('18k',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-18k"><button class="pp-btn" onclick="stepFix('18k',-10)">−</button><input type="range" class="pp-range k" id="sf-18k" min="-500" max="200" step="1" value="0" oninput="onSlideFix('18k')"><button class="pp-btn" onclick="stepFix('18k',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-18k">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-18k">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-18k">--</div><button class="pp-reset" onclick="resetOne('18k')">归零</button></div></div>
+    <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name pt">Pt950</div><div class="pp-metal-sub">铂950</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-pt950" onclick="setMode('pt950','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-pt950" onclick="setMode('pt950','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-pt950"><button class="pp-btn" onclick="stepPct('pt950',-0.5)">−</button><input type="range" class="pp-range pt" id="sp-pt950" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('pt950')"><button class="pp-btn" onclick="stepPct('pt950',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-pt950"><button class="pp-btn" onclick="stepFix('pt950',-10)">−</button><input type="range" class="pp-range pt" id="sf-pt950" min="-500" max="200" step="1" value="0" oninput="onSlideFix('pt950')"><button class="pp-btn" onclick="stepFix('pt950',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-pt950">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-pt950">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-pt950">--</div><button class="pp-reset" onclick="resetOne('pt950')">归零</button></div></div>
+    <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name pd">Pd990</div><div class="pp-metal-sub">钯990</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-pd990" onclick="setMode('pd990','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-pd990" onclick="setMode('pd990','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-pd990"><button class="pp-btn" onclick="stepPct('pd990',-0.5)">−</button><input type="range" class="pp-range pd" id="sp-pd990" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('pd990')"><button class="pp-btn" onclick="stepPct('pd990',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-pd990"><button class="pp-btn" onclick="stepFix('pd990',-10)">−</button><input type="range" class="pp-range pd" id="sf-pd990" min="-500" max="200" step="1" value="0" oninput="onSlideFix('pd990')"><button class="pp-btn" onclick="stepFix('pd990',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-pd990">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-pd990">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-pd990">--</div><button class="pp-reset" onclick="resetOne('pd990')">归零</button></div></div>
+    <div style="margin:8px 0 4px;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;">📢 公告内容（留空则不显示）</label><br><input id="noticeInput" type="text" maxlength="100" placeholder="输入公告内容..." style="width:100%;margin-top:4px;background:rgba(10,22,40,0.8);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:12px;padding:6px 10px;outline:none;font-family:inherit;box-sizing:border-box;"></div>
+    <div style="margin:6px 0 4px;display:flex;align-items:center;gap:10px;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;white-space:nowrap;">🐢 滚动速度</label><input id="noticeSpeed" type="range" min="5" max="60" value="25" style="flex:1;height:3px;accent-color:var(--gold);cursor:pointer;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;white-space:nowrap;">🐇</label></div>
+    <div class="pp-sync" id="syncTip"></div>
+    <div class="pp-footer">调节后点下方按钮 · 所有访客价格同步更新</div>
+    <div style="text-align:center;margin-top:10px;"><button onclick="saveToFirebase()" style="background:linear-gradient(135deg,#0277BD,#4FC3F7);border:none;color:#0A1628;padding:8px 32px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.1em;font-family:'Noto Serif SC',serif;">保存并同步所有人</button></div>
+  </div>
+</div><script>
+var WS_URL='ws://rtjqtgw.ytj9999.com:7443/gateway';
+(function(){
+  // 融通金原生 WebSocket 协议 (AUTH→HELLO→HB→订阅)
+  var AUTH_B64='CCAQ+g8iQSo/CgNydGoSOD3V+ThTvIWQGkvTKzmQB+8R4Z7qPLWPIWY3fShEZvPpPcDh9oGcRd0HroBsEPJzZsppk5LexK9N';
+  var HELLO_B64='CBwQ3A8iBQoDUlRK';
+  var HB_B64='CBAQvAM=';
+  var SYMS=['JZJ_au_PB','JZJ_ag_PB','JZJ_pt_PB','JZJ_pd_PB','JZJ_au_PS','JZJ_ag_PS','JZJ_pt_PS','JZJ_pd_PS'];
+  function b64dec(s){
+    var bin=atob(s),a=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);
+    return a.buffer;
+  }
+  function vint(n){
+    var o=[];
+    while(n>127){o.push((n&127)|128);n=Math.floor(n/128);}
+    o.push(n);return new Uint8Array(o);
+  }
+  function subFrame(sym,seq){
+    var s=new TextEncoder().encode(sym);
+    var inner=new Uint8Array(2+s.length+3);
+    inner[0]=0x0a;inner[1]=s.length;inner.set(s,2);
+    inner[2+s.length]=0x12;inner[3+s.length]=0x01;inner[4+s.length]=0x00;
+    var head=new Uint8Array([0x08,0x12,0x10]);
+    var vs=vint(seq);
+    var out=new Uint8Array(head.length+vs.length+2+inner.length);
+    var p=0;
+    out.set(head,p);p+=head.length;
+    out.set(vs,p);p+=vs.length;
+    out[p++]=0x22;out[p++]=inner.length;
+    out.set(inner,p);
+    return out.buffer;
+  }
+  function bj(){return new Date(Date.now()+8*3600000).toISOString().slice(0,19).replace('T',' ');}
+  function readVarint(u8,i){
+    var s=0,sh=0;
+    while(i<u8.length){
+      var x=u8[i++];s|=(x&0x7f)<<sh;
+      if(!(x&0x80))break;sh+=7;
+    }
+    return [s,i];
+  }
+  function parsePb(buf){
+    var u8=buf instanceof Uint8Array?buf:new Uint8Array(buf);
+    var out=[],i=0,n=u8.length;
+    while(i<n){
+      try{
+        var k=readVarint(u8,i);var f=k[0]>>3,w=k[0]&7;i=k[1];
+        if(w===0){var v=readVarint(u8,i);out.push([f,0,v[0]]);i=v[1];}
+        else if(w===1){
+          if(i+8>n)break;
+          var dv=new DataView(u8.buffer,u8.byteOffset+i,8);
+          out.push([f,1,dv.getFloat64(0,true)]);i+=8;
+        }else if(w===2){
+          var ln=readVarint(u8,i);i=ln[1];
+          if(i+ln[0]>n)break;
+          out.push([f,2,u8.subarray(i,i+ln[0])]);i+=ln[0];
+        }else if(w===5){
+          if(i+4>n)break;
+          var fv=new DataView(u8.buffer,u8.byteOffset+i,4);
+          out.push([f,5,fv.getFloat32(0,true)]);i+=4;
+        }else break;
+      }catch(e){break;}
+    }
+    return out;
+  }
+  function walkPrices(buf,found){
+    function walk(b,d){
+      if(d>6)return;
+      var fields=parsePb(b);
+      for(var fi=0;fi<fields.length;fi++){
+        var f=fields[fi][0],w=fields[fi][1],v=fields[fi][2];
+        if(w===2&&v&&v.length>0&&v.length<6000){
+          var sub=parsePb(v);
+          var sym='',ts=0,price=null;
+          for(var j=0;j<sub.length;j++){
+            if(sub[j][0]===1&&sub[j][1]===2){
+              try{sym=new TextDecoder().decode(sub[j][2]);}catch(e){}
+            }
+            if(sub[j][0]===5&&sub[j][1]===0)ts=sub[j][2];
+            if(sub[j][0]===7&&sub[j][1]===2){
+              var snap=parsePb(sub[j][2]);
+              for(var k=0;k<snap.length;k++){
+                if(snap[k][0]===1&&snap[k][1]===1)price=Math.round(snap[k][2]*10000)/10000;
+              }
+            }
+          }
+          if(sym&&/^JZJ_/.test(sym)&&price!=null){
+            found[sym]=price;
+            found['TS_'+sym]=ts;
+          }else{
+            walk(v,d+1);
+          }
+        }
+      }
+    }
+    walk(buf instanceof Uint8Array?buf:new Uint8Array(buf),0);
+  }
+  function RtjSocket(url){
+    var me=this;
+    if(RtjSocket.cur)try{RtjSocket.cur.close();}catch(e){}
+    RtjSocket.cur=me;
+    me.url=url;me.readyState=0;me._ws=null;me._hbTimer=null;me._closed=false;
+    me.onopen=null;me.onmessage=null;me.onclose=null;me.onerror=null;
+    me._prices={};me._authed=false;
+    try{
+      var ws=new (window.__NativeWS||WebSocket)(url);
+      me._ws=ws;
+      ws.binaryType='arraybuffer';
+      ws.onopen=function(){
+        me.readyState=1;
+        // 发 AUTH
+        ws.send(b64dec(AUTH_B64));
+        if(me.onopen)me.onopen({});
+      };
+      ws.onmessage=function(ev){
+        if(me._closed)return;
+        var data=ev.data;
+        if(typeof data==='string')return;
+        var u8=new Uint8Array(data);
+        if(!me._authed){
+          me._authed=true;
+          // 收到 ack 后发 HELLO + HB + 订阅
+          ws.send(b64dec(HELLO_B64));
+          ws.send(b64dec(HB_B64));
+          for(var i=0;i<SYMS.length;i++){
+            ws.send(subFrame(SYMS[i],2014+i*2));
+          }
+          // 定时心跳
+          me._hbTimer=setInterval(function(){
+            if(me._ws&&me._ws.readyState===1){
+              try{me._ws.send(b64dec(HB_B64));}catch(e){}
+            }
+          },15000);
+        }
+        var found={};
+        walkPrices(u8,found);
+        var keys=Object.keys(found);
+        if(!keys.length&&me.onmessage)me.onmessage({data:'{"type":"ping"}'});
+        if(keys.length){
+          for(var k in found)me._prices[k]=found[k];
+          var tsMax=0;
+          for(var tk in found){if(tk.indexOf('TS_')===0&&found[tk]>tsMax)tsMax=found[tk];}
+          var qStr=tsMax>1000000000?new Date(tsMax*1000+8*3600000).toISOString().slice(0,16).replace('T',' '):'';
+          var out={ok:true,'时间':bj(),'行情时间':qStr};
+          if(me._prices['JZJ_au_PB']!=null)out['黄金']=me._prices['JZJ_au_PB'];
+          if(me._prices['JZJ_ag_PB']!=null)out['白银']=me._prices['JZJ_ag_PB'];
+          if(me._prices['JZJ_pt_PB']!=null)out['铂金']=me._prices['JZJ_pt_PB'];
+          if(me._prices['JZJ_pd_PB']!=null)out['钯金']=me._prices['JZJ_pd_PB'];
+          if(out['黄金']||out['白银']||out['铂金']||out['钯金']){
+            if(me.onmessage)me.onmessage({data:JSON.stringify(out)});
+          }
+        }
+      };
+      ws.onerror=function(){if(me._closed)return;if(me.onerror)me.onerror({});};
+      ws.onclose=function(){
+        me.readyState=3;
+        if(me._hbTimer)clearInterval(me._hbTimer);
+        if(me._closed)return;
+        if(me.onclose)me.onclose({});
+      };
+    }catch(e){
+      me.readyState=3;
+      setTimeout(function(){if(me.onerror)me.onerror({});if(me.onclose)me.onclose({});},0);
+    }
+  }
+  RtjSocket.prototype.close=function(){
+    this._closed=true;this.readyState=3;
+    if(this._hbTimer)clearInterval(this._hbTimer);
+    if(this._ws)try{this._ws.close();}catch(e){}
+  };
+  // 保存原生 WebSocket，再覆盖
+  window.__NativeWS=window.WebSocket;
+  window.WebSocket=RtjSocket;
+})();
+
+var _ws=null,_wsLastTime=Date.now();
+var _reconnecting=false;
+var 
+
+
+
+FB_URL='https://zccv-bffca-default-rtdb.asia-southeast1.firebasedatabase.app/shop1/adj.json';
+
+
+
+
+var 
+
+
+
+
+
+FB_NOTICE='https://zccv-bffca-default-rtdb.asia-southeast1.firebasedatabase.app/shop1/notice.json';
+
+
+
+var KEYS=['gold','silver','platinum','palladium','au999','18k','pt950','pd990'];
+var adj={gold:{mode:'fix',pct:0,fix:0},silver:{mode:'fix',pct:0,fix:0},platinum:{mode:'fix',pct:0,fix:0},palladium:{mode:'fix',pct:0,fix:0},au999:{mode:'fix',pct:0,fix:0},'18k':{mode:'fix',pct:0,fix:0},pt950:{mode:'fix',pct:0,fix:0},pd990:{mode:'fix',pct:0,fix:0}};
+var prev={},lastPrice={};
+var HIST={gold:{m15:[],h1:[],d1:[],w1:[]},silver:{m15:[],h1:[],d1:[],w1:[]},platinum:{m15:[],h1:[],d1:[],w1:[]},palladium:{m15:[],h1:[],d1:[],w1:[]},au999:{m15:[],h1:[],d1:[],w1:[]},'18k':{m15:[],h1:[],d1:[],w1:[]},pt950:{m15:[],h1:[],d1:[],w1:[]},pd990:{m15:[],h1:[],d1:[],w1:[]}};
+var activeTab={gold:'m15',silver:'m15',platinum:'m15',palladium:'m15',au999:'m15','18k':'m15',pt950:'m15',pd990:'m15'};
+var chartCounters={gold:0,silver:0,platinum:0,palladium:0,au999:0,'18k':0,pt950:0,pd990:0};
+
+
+
+
+function $(id){return document.getElementById(id)}var _silverHidden=true;
+var silverReady=false;
+var FB_SILVER='https://zccv-bffca-default-rtdb.asia-southeast1.firebasedatabase.app/shop1/silverSwitch.json';
+
+
+
+
+function toggleSilver(){
+  if(!silverReady)return;
+  silverReady=false;
+  saveSilverSwitch(!_silverHidden);
+}
+
+function saveSilverSwitch(hidden){
+ fetch(FB_SILVER,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({hidden:hidden,time:new Date().toLocaleString('zh-CN')})});
+}
+
+function applySilverState(data){
+ if(!data)return;
+ _silverHidden=!!data.hidden;
+ if(_silverHidden){
+    $('p-silver').textContent='———';
+    $('chg-silver').textContent='— —';
+    $('chg-silver').className='chg neu';
+    var cv=$('cv-silver');
+    if(cv){var ctx=cv.getContext('2d');ctx.clearRect(0,0,cv.width,cv.height);}
+    $('col-silver').style.opacity='0.4';
+ }else{
+    $('col-silver').style.opacity='1';
+    if(lastPrice['silver'])renderCard('silver',lastPrice['silver']);
+    drawChart('silver');
+ }
+}
+
+
+
+
+
+
+
+function setStatus(cls,txt){$('dot').className='dot '+(cls||'');$('stxt').textContent=txt;var lu=$('lupd');if(lu)lu.classList.toggle('off',txt==='休市中');}
+function toggleFS(){if(!document.fullscreenElement)
+
+
+
+
+{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}else{document.exitFullscreen&&document.exitFullscreen()}} 
+
+
+
+
+
+
+  
+     var _silverReadyTimer=null;                         var step1Done=false,step1Timer=null,pwdTimer=null,PASSWORD='a123456a';
+function triggerStep1(){step1Done=true;clearTimeout(step1Timer);step1Timer=setTimeout(function(){step1Done=false;},8000);}
+
+
+
+
+
+function triggerStep2(){silverReady=true;clearTimeout(_silverReadyTimer);_silverReadyTimer=setTimeout(function(){silverReady=false;},5000);if(!step1Done)return;step1Done=false;clearTimeout(step1Timer);showPwdInput();}
+
+
+
+
+
+
+function showPwdInput(){var w=$('pwdWrap'),i=$('pwdInput');w.classList.add('show');i.value='';setTimeout(function(){i.focus();},100);clearTimeout(pwdTimer);pwdTimer=setTimeout(hidePwdInput,6000);}
+function hidePwdInput(){$('pwdWrap').classList.remove('show');$('pwdInput').value='';clearTimeout(pwdTimer);}
+function checkPwd(){clearTimeout(pwdTimer);pwdTimer=setTimeout(hidePwdInput,6000);if($('pwdInput').value===PASSWORD){hidePwdInput();openPanel();}}
+function openPanel(){$('overlay').classList.add('open')}
+function closePanel(){$('overlay').classList.remove('open')}
+function overlayClick(e){if(e.target===$('overlay'))closePanel()}
+var noticeTimer=null;
+function startNotice(text,speed){
+  var nt=$('noticeText');if(!nt)return;
+  if(noticeTimer){clearInterval(noticeTimer);noticeTimer=null;}
+  nt.style.animation='none';
+  nt.style.paddingLeft='0';
+  nt.style.transform='none';
+  nt.textContent=text||'';
+  if(!text)return;
+  // 稍后再启动滚动，先让文字可见
+  var dur=Math.max(12,75-(speed||25))+'s';
+  setTimeout(function(){
+    nt.style.paddingLeft='100%';
+    void nt.offsetWidth;
+    nt.style.animation='marquee '+dur+' linear infinite';
+  },800);
+}
+function loadLocal(){
+  try{var s=localStorage.getItem('jdAdj_shop1');
+    if(s){var d=JSON.parse(s);KEYS.forEach(function(k){if(d[k]){adj[k].mode=d[k].mode||'fix';adj[k].pct=d[k].pct||0;adj[k].fix=d[k].fix!==undefined?d[k].fix:0;}});}
+  }catch(e){}
+  KEYS.forEach(function(k){$('sp-'+k).value=adj[k].pct;$('sf-'+k).value=adj[k].fix;setMode(k,adj[k].mode,true);refreshValUI(k);});
+}
+function applyAdjData(d){
+  if(!d)return;KEYS.forEach(function(k){if(d[k]){adj[k].mode=d[k].mode||'fix';adj[k].pct=d[k].pct||0;adj[k].fix=d[k].fix!==undefined?d[k].fix:0;}});
+  KEYS.forEach(function(k){$('sp-'+k).value=adj[k].pct;$('sf-'+k).value=adj[k].fix;setMode(k,adj[k].mode,true);refreshValUI(k);});
+  KEYS.forEach(function(k){if(lastPrice[k])renderCard(k,lastPrice[k]);});
+  try{localStorage.setItem('jdAdj_shop1',JSON.stringify(adj));}catch(e){}
+}
+var lastNoticeText='',lastNoticeSpeed=0;
+function applyNoticeData(n){
+  var t=(n&&n.text)?String(n.text).trim():'';
+  var sp=(n&&n.speed)?(parseInt(n.speed)||25):25;
+  if(t){
+    if(t===lastNoticeText&&sp===lastNoticeSpeed)return;
+    lastNoticeText=t;lastNoticeSpeed=sp;
+    $('noticebar').style.display='flex';
+    startNotice(t,lastNoticeSpeed);
+    var ni=$('noticeInput'),ns=$('noticeSpeed');if(ni)ni.value=t;if(ns)ns.value=lastNoticeSpeed;
+  }else{
+    if(lastNoticeText==='')return;
+    lastNoticeText='';lastNoticeSpeed=0;
+    $('noticebar').style.display='none';
+    var nt=$('noticeText');if(nt){nt.textContent='';nt.style.animation='none';}
+  }
+}
+var adjESS=null,noticeESS=null;
+function startSSE(){
+  if(adjESS){try{adjESS.close();}catch(e){}}
+  adjESS=new EventSource(FB_URL);
+  adjESS.addEventListener('put',function(e){try{var msg=JSON.parse(e.data);if(msg&&msg.data)applyAdjData(msg.data);}catch(ex){}});
+  adjESS.addEventListener('patch',function(e){try{var msg=JSON.parse(e.data);if(msg&&msg.data)applyAdjData(msg.data);}catch(ex){}});
+  adjESS.onerror=function(){loadLocal();setTimeout(startSSE,30000);};
+  if(noticeESS){try{noticeESS.close();}catch(e){}}
+  noticeESS=new EventSource(FB_NOTICE);
+  noticeESS.addEventListener('put',function(e){try{var msg=JSON.parse(e.data);if(msg)applyNoticeData(msg.data);}catch(ex){}});
+  noticeESS.addEventListener('patch',function(e){try{var msg=JSON.parse(e.data);if(msg)applyNoticeData(msg.data);}catch(ex){}});
+  noticeESS.onerror=function(){};
+
+  var silverESS=new EventSource(FB_SILVER);
+  silverESS.addEventListener('put',function(e){
+    try{var msg=JSON.parse(e.data);if(msg.data)applySilverState(msg.data);}catch(ex){}
+  });
+  silverESS.addEventListener('patch',function(e){
+    try{var msg=JSON.parse(e.data);if(msg.data)applySilverState(msg.data);}catch(ex){}
+  });
+}
+function saveToFirebase(){
+  var tip=$('syncTip');
+  tip.className='pp-sync ing';
+  tip.textContent='正在同步...';
+  var noticeVal=$('noticeInput')?$('noticeInput').value.trim():'';
+  var noticeSpeed=$('noticeSpeed')?parseInt($('noticeSpeed').value)||25:25;
+  var done=false;
+  function finish(ok,msg){
+    if(done)return;
+    done=true;
+    tip.className='pp-sync '+(ok?'ok':'err');
+    tip.textContent=msg;
+    if(ok){
+      try{localStorage.setItem('jdAdj_shop1',JSON.stringify(adj));}catch(e){}
+      if(noticeVal){$('noticebar').style.display='flex';startNotice(noticeVal,noticeSpeed);}
+      else{$('noticebar').style.display='none';}
+      setTimeout(function(){if(tip.textContent===msg)tip.textContent='';},4000);
+    }
+  }
+  var timer=setTimeout(function(){finish(false,'✗ 同步超时，请重试');},12000);
+  function put(url,body){
+    return fetch(url,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){
+        if(!r.ok)throw new Error('HTTP '+r.status);
+        return r.json().catch(function(){return true;});
+      });
+  }
+  Promise.all([
+    put(FB_URL,adj),
+    put(FB_NOTICE,{text:noticeVal,speed:noticeSpeed})
+  ]).then(function(){
+    clearTimeout(timer);
+    finish(true,'✓ 已同步，所有人立即更新');
+  }).catch(function(){
+    clearTimeout(timer);
+    finish(false,'✗ 同步失败，请检查网络');
+  });
+}function setMode(key,mode,silent){
+  adj[key].mode=mode;
+  $('mt-pct-'+key).className='pp-mode-tab'+(mode==='pct'?' active':'');
+  $('mt-fix-'+key).className='pp-mode-tab'+(mode==='fix'?' active':'');
+  $('pc-'+key).className='pp-pct-ctrl'+(mode==='pct'?'':' pp-hidden');
+  $('fc-'+key).className='pp-fixed-ctrl'+(mode==='fix'?'':' pp-hidden');
+  $('vp-'+key).className='pp-val-pct'+(mode==='pct'?'':' pp-hidden')+' zero';
+  $('vf-'+key).className='pp-val-fix'+(mode==='fix'?'':' pp-hidden')+' zero';
+  refreshValUI(key);if(!silent&&lastPrice[key])renderCard(key,lastPrice[key]);
+}
+function applyAdj(base,key){return adj[key].mode==='pct'?base*(1+adj[key].pct/100):base+adj[key].fix;}
+function refreshValUI(key){
+  var a=adj[key];
+  if(a.mode==='pct'){var el=$('vp-'+key),sign=a.pct>0?'+':'';el.textContent=sign+a.pct.toFixed(2)+'%';el.className='pp-val-pct '+(a.pct>0?'pos':a.pct<0?'neg':'zero');}
+  else{var el=$('vf-'+key),sign=a.fix>0?'+':'';el.textContent=sign+(Number.isInteger(a.fix)?a.fix:a.fix.toFixed(2))+' 元/克';el.className='pp-val-fix '+(a.fix>0?'pos':a.fix<0?'neg':'zero');}
+  var p=lastPrice[key];$('pv-'+key).textContent=p?applyAdj(p,key).toFixed(2)+' 元/克':'-- 元/克';
+}
+function onSlidePct(key){adj[key].pct=parseFloat($('sp-'+key).value)||0;refreshValUI(key);if(lastPrice[key])renderCard(key,lastPrice[key]);}
+function stepPct(key,d){var nv=Math.min(50,Math.max(-80,Math.round((adj[key].pct+d)*10)/10));adj[key].pct=nv;$('sp-'+key).value=nv;refreshValUI(key);if(lastPrice[key])renderCard(key,lastPrice[key]);}
+function onSlideFix(key){adj[key].fix=parseFloat($('sf-'+key).value)||0;refreshValUI(key);if(lastPrice[key])renderCard(key,lastPrice[key]);}
+function stepFix(key,d){var nv=Math.min(200,Math.max(-500,Math.round((adj[key].fix+d)*10)/10));adj[key].fix=nv;$('sf-'+key).value=nv;refreshValUI(key);if(lastPrice[key])renderCard(key,lastPrice[key]);}
+function resetOne(key){adj[key].pct=0;adj[key].fix=0;$('sp-'+key).value=0;$('sf-'+key).value=0;refreshValUI(key);if(lastPrice[key])renderCard(key,lastPrice[key]);}
+
+
+
+
+
+
+
+function renderCard(key,base){
+  if(!base)return;
+  if(key==='silver'&&_silverHidden)return;
+
+
+
+
+
+
+
+
+
+  var cny=applyAdj(base,key),pEl=$('p-'+key),old=prev[key];
+  var dir=old===undefined?'neu':cny>old?'up':cny<old?'down':'neu';
+  pEl.textContent=cny.toFixed(2);pEl.className='price-cny '+dir;
+  var col=$('col-'+key);col.classList.remove('fu','fd');void col.offsetWidth;
+  if(dir==='up')col.classList.add('fu');if(dir==='down')col.classList.add('fd');
+  if(old!==undefined){var chg=cny-old,pct=chg/old*100,sign=chg>=0?'+':'';
+    $('chg-'+key).textContent=(chg>=0?'▲ ':'▼ ')+sign+chg.toFixed(2)+' ('+sign+pct.toFixed(2)+'%)';
+    $('chg-'+key).className='chg '+(chg>0?'up':chg<0?'down':'neu');}
+  refreshValUI(key);pushChartPoint(key,cny);prev[key]=cny;
+}
+var HISTORY_API='https://standardbullion.com/api/v1/market/history';
+var CHART_METAL={gold:'XAU',silver:'XAG',platinum:'XPT',palladium:'XPD',au999:'XAU','18k':'XAU',pt950:'XPT',pd990:'XPD'};
+var chartFetchAt={};
+var chartOffsets={};
+var chartTouchStart={};
+// 每个周期一屏都显示30根蜡烛，保证四个周期的蜡烛粗细一样
+function chartViewCount(tab){return tab==='m15'?180:30;}
+function switchTab(key,tab,el){
+  activeTab[key]=tab;
+  chartOffsets[key+'_'+tab]=0;
+  var tabs=el.parentNode.querySelectorAll('.chart-tab');
+  tabs.forEach(function(t){t.classList.remove('active')});
+  el.classList.add('active');
+  fetchHistory(key,true);
+  drawChart(key);
+}
+function chartRange(tab){return tab==='m15'?'7d':tab==='h1'?'7d':'1y';}
+function chartFilter(points,tab){
+  // 把历史行情点按周期合成蜡烛：开=上一根收盘，收=本周期最后一个价，高/低=周期内最高/最低
+  var now=Date.now(),maxAge=tab==='m15'?7*86400000:tab==='h1'?7*86400000:366*86400000;
+  var cutoff=now-maxAge,step=tab==='m15'?15*60000:tab==='h1'?3600000:tab==='d1'?86400000:7*86400000;
+  var pts=[];
+  (points||[]).forEach(function(p){
+    var t=typeof p.t==='number'?p.t:(Date.parse(p.t)||0);
+    if(t>0&&t<1e12)t*=1000;
+    var v=Number(p.price);
+    if(!t||!isFinite(v)||t<cutoff||t>now+60000)return;
+    pts.push({t:t,v:v});
+  });
+  pts.sort(function(a,b){return a.t-b.t;});
+  var out=[],lastBucket=null,prevClose=null;
+  pts.forEach(function(p){
+    var b=Math.floor(p.t/step);
+    if(b!==lastBucket){
+      var o=prevClose!==null?prevClose:p.v;
+      out.push({t:p.t,o:o,h:Math.max(o,p.v),l:Math.min(o,p.v),c:p.v});
+      lastBucket=b;
+    }else{
+      var c=out[out.length-1];
+      if(p.v>c.h)c.h=p.v;
+      if(p.v<c.l)c.l=p.v;
+      c.c=p.v;
+    }
+    prevClose=p.v;
+  });
+  // 休市（周末/夜间）时接口会补一串完全不动的价格，这些"平的"蜡烛没有意义，去掉，只留有行情的；最新一根始终保留
+  var kept=[];
+  out.forEach(function(c,i){
+    var tiny=Math.abs(c.h-c.l)<=c.c*0.00005&&Math.abs(c.o-c.c)<=c.c*0.00005;
+    if(i===out.length-1||!tiny)kept.push(c);
+  });
+  return kept;
+}
+function loadHistory(symbol,range,tab){
+  return fetch(HISTORY_API+'?metal='+encodeURIComponent(symbol)+'&range='+encodeURIComponent(range),{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(function(data){
+      var raw=chartFilter(data.points,tab);
+      if(!raw.length)throw new Error('no history points');
+      return raw;
+    });
+}
+function fetchHistory(key,force){
+  var tab=activeTab[key]||'m15',cacheKey=key+'_'+tab,now=Date.now();
+  if(tab==='m15')return; // 15分用页面自己攒的数据，不取接口
+  if(!force&&chartFetchAt[cacheKey]&&now-chartFetchAt[cacheKey]<300000)return;
+  chartFetchAt[cacheKey]=now;
+  var symbol=CHART_METAL[key],range=chartRange(tab);
+  var pr=loadHistory(symbol,range,tab);
+  // 接口如果不支持一年，退回3个月，保证图不会空
+  if(range==='1y')pr=pr.catch(function(){return loadHistory(symbol,'3m',tab);});
+  pr.then(function(raw){
+      HIST[key][tab]=raw;
+      drawChart(key);
+    })
+    .catch(function(){
+      // 取失败时保留已有的旧数据，没有旧数据才显示空图
+      if(!(HIST[key][tab]&&HIST[key][tab].length))HIST[key][tab]=[];
+      drawChart(key);
+    });
+}
+var LIVE_MS=1000,LIVE_MAX=7200,LIVE={};
+function getCandles(key,tab){return tab==='m15'?(LIVE[key]||(LIVE[key]=[])):(HIST[key][tab]||[]);}
+function pushLive(key){
+  var base=lastPrice[key];
+  if(!(base>0))return;
+  var arr=getCandles(key,'m15'),now=Date.now(),b=Math.floor(now/LIVE_MS),last=arr[arr.length-1];
+  if(last&&last.b===b){
+    if(base>last.h)last.h=base;
+    if(base<last.l)last.l=base;
+    last.c=base;
+  }else{
+    var o=last?last.c:base,added=0;
+    if(last&&b-last.b>1){
+      var gap=Math.min(b-last.b-1,300);
+      for(var g=1;g<=gap;g++){arr.push({b:last.b+g,t:last.t+g*LIVE_MS,o:o,h:o,l:o,c:o});added++;}
+    }
+    arr.push({b:b,t:now,o:o,h:Math.max(o,base),l:Math.min(o,base),c:base});added++;
+    while(arr.length>LIVE_MAX)arr.shift();
+    var k=key+'_m15',off=chartOffsets[k]||0;
+    if(off>0)chartOffsets[k]=Math.min(off+added,Math.max(0,arr.length-chartViewCount('m15')));
+  }
+}
+// 每秒记一个点并重画，不管价格几秒推一次，1分图都匀速走
+setInterval(function(){KEYS.forEach(function(k){if(lastPrice[k]){pushLive(k);if(activeTab[k]==='m15')drawChart(k);}});},1000);
+function pushChartPoint(key,cny){
+  chartCounters[key]++;
+  pushLive(key);
+  if(activeTab[key]==='m15')drawChart(key);
+  else fetchHistory(key,false);
+}
+function drawChart(key){
+  var canvas=$('cv-'+key);if(!canvas)return;
+  if(key==='silver'&&_silverHidden){var c0=canvas.getContext('2d');c0.clearRect(0,0,canvas.width,canvas.height);return;}
+  var tab=activeTab[key]||'m15',raw=getCandles(key,tab),live=(tab==='m15');
+  var current=lastPrice[key]?applyAdj(lastPrice[key],key):null;
+  var lastC=raw.length?raw[raw.length-1].c:0;
+  var scale=(!live&&current&&lastC)?current/lastC:1;
+  function tf(v){return live?applyAdj(v,key):v*scale;}
+  var viewCount=chartViewCount(tab);
+  var offset=chartOffsets[key+'_'+tab]||0;
+  var end=Math.max(0,raw.length-offset);
+  var start=Math.max(0,end-viewCount);
+  var cs=raw.slice(start,end).map(function(p){return {o:tf(p.o),h:tf(p.h),l:tf(p.l),c:tf(p.c)};});
+  var lineMode=live&&window.innerWidth>=768;
+  if(lineMode)cs=cs.map(function(c){return {o:c.c,h:c.c,l:c.c,c:c.c};});
+  var wrap=canvas.parentNode,W=wrap.clientWidth,H=wrap.clientHeight;
+  if(W<2||H<2)return;
+  var dpr=window.devicePixelRatio||1;
+  canvas.width=W*dpr;canvas.height=H*dpr;
+  var ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.clearRect(0,0,W,H);
+  if(cs.length<1){
+    ctx.strokeStyle='rgba(79,195,247,0.12)';ctx.lineWidth=0.6;
+    ctx.beginPath();ctx.moveTo(6,H*0.55);ctx.lineTo(W-6,H*0.55);ctx.stroke();
+    return;
+  }
+  var minV=Infinity,maxV=-Infinity,hiI=0,loI=0;
+  cs.forEach(function(c,i){
+    if(c.l<minV){minV=c.l;loI=i;}
+    if(c.h>maxV){maxV=c.h;hiI=i;}
+  });
+  var hiV=maxV,loV=minV;
+  var range=maxV-minV||Math.abs(maxV)*0.001||1;
+  minV-=range*0.12;maxV+=range*0.12;range=maxV-minV;
+  var fs=W<260?8:9;
+  ctx.font=fs+'px "JetBrains Mono",monospace';
+  var lastV=cs[cs.length-1].c;
+  var boxW=Math.ceil(ctx.measureText(maxV.toFixed(2)).width)+8,boxH=fs+4;
+  var pad={l:4,r:boxW+4,t:4,b:4},gW=W-pad.l-pad.r,gH=H-pad.t-pad.b;
+  function yp(v){return pad.t+(1-(v-minV)/range)*gH;}
+  var n=cs.length,slot=gW/Math.max(n,viewCount),bw=Math.max(1.4,Math.min(6,slot*0.62));
+  if(lineMode){
+    var up0=cs[n-1].c>=cs[0].c,lc=up0?'#4DCB82':'#E05555';
+    ctx.save();
+    ctx.beginPath();
+    for(var j=0;j<n;j++){var lx0=pad.l+slot*(j+0.5),ly0=yp(cs[j].c);if(j===0)ctx.moveTo(lx0,ly0);else ctx.lineTo(lx0,ly0);}
+    ctx.strokeStyle=lc;ctx.lineWidth=1.2;ctx.lineJoin='round';ctx.stroke();
+    ctx.lineTo(pad.l+slot*(n-0.5),pad.t+gH);ctx.lineTo(pad.l+slot*0.5,pad.t+gH);ctx.closePath();
+    var gr=ctx.createLinearGradient(0,pad.t,0,pad.t+gH);
+    gr.addColorStop(0,up0?'rgba(77,203,130,0.22)':'rgba(224,85,85,0.22)');gr.addColorStop(1,'rgba(10,22,40,0)');
+    ctx.fillStyle=gr;ctx.fill();
+    ctx.restore();
+  }else for(var i=0;i<n;i++){
+    var c=cs[i],up=c.c>=c.o,col=up?'#4DCB82':'#E05555';
+    var x=pad.l+slot*(i+0.5);
+    ctx.strokeStyle=col;ctx.fillStyle=col;ctx.lineWidth=slot<3?0.9:1.2;
+    ctx.beginPath();ctx.moveTo(x,yp(c.h));ctx.lineTo(x,yp(c.l));ctx.stroke();
+    var yTop=yp(Math.max(c.o,c.c)),yBot=yp(Math.min(c.o,c.c)),bh=Math.max(1,yBot-yTop);
+    ctx.fillRect(x-bw/2,yTop,bw,bh);
+  }
+  // 最高/最低价标注（带引线）
+  function mark(idx,v,isHigh){
+    var x=pad.l+slot*(idx+0.5),y=yp(v),txt=v.toFixed(2),tw=ctx.measureText(txt).width;
+    var toRight=(x+10+tw<=W-pad.r);
+    var x1=toRight?x+8:x-8,tx=toRight?x+10:x-10;
+    if(!toRight&&tx-tw<2)tx=tw+2;
+    ctx.save();
+    ctx.strokeStyle='rgba(227,242,253,0.7)';ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x1,y);ctx.stroke();
+    ctx.textAlign=toRight?'left':'right';ctx.textBaseline='middle';
+    ctx.lineWidth=2.5;ctx.strokeStyle='rgba(10,22,40,0.9)';ctx.strokeText(txt,tx,y);
+    ctx.fillStyle='#E3F2FD';ctx.fillText(txt,tx,y);
+    ctx.restore();
+  }
+  if(hiV>loV){
+    mark(hiI,hiV,true);
+    mark(loI,loV,false);
+  }
+  // 当前价：虚线 + 右侧框（只在看最新数据时显示）
+  if(offset===0){
+    var ly=yp(lastV);
+    ctx.save();
+    ctx.setLineDash([3,3]);ctx.strokeStyle='rgba(129,212,250,0.6)';ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(pad.l,ly);ctx.lineTo(W-boxW-1,ly);ctx.stroke();
+    ctx.setLineDash([]);
+    var bx=W-boxW-1,by=Math.max(1,Math.min(H-boxH-1,ly-boxH/2));
+    ctx.fillStyle='#0A1628';ctx.strokeStyle='rgba(129,212,250,0.8)';ctx.lineWidth=0.9;
+    ctx.beginPath();
+    if(ctx.roundRect)ctx.roundRect(bx,by,boxW,boxH,3);else ctx.rect(bx,by,boxW,boxH);
+    ctx.fill();ctx.stroke();
+    ctx.fillStyle='#E3F2FD';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(lastV.toFixed(2),bx+boxW/2,by+boxH/2+0.5);
+    ctx.restore();
+  }
+}
+function panChart(key,deltaX){
+  var tab=activeTab[key]||'m15',raw=getCandles(key,tab);
+  var count=chartViewCount(tab);
+  if(raw.length<=count)return;
+  var k=key+'_'+tab,old=chartOffsets[k]||0;
+  var step=Math.max(1,Math.round(Math.abs(deltaX)/Math.max(1,($('cv-'+key).parentNode.clientWidth||300))*count));
+  var next=deltaX>0?old+step:old-step;
+  chartOffsets[k]=Math.max(0,Math.min(raw.length-count,next));
+  drawChart(key);
+}
+KEYS.forEach(function(key){
+  var canvas=$('cv-'+key);if(!canvas)return;
+  var area=canvas.parentNode;
+  // Pointer events unify Android touch and mouse input. Horizontal gestures are handled
+  // by the chart; vertical page scrolling remains native.
+  canvas.style.touchAction='pan-y';
+  var downX=0,downY=0,baseOffset=0,active=false,locked=false,tabAtStart='m15';
+  function start(e){
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    downX=e.clientX;downY=e.clientY;active=true;locked=false;
+    tabAtStart=activeTab[key]||'m15';
+    baseOffset=chartOffsets[key+'_'+tabAtStart]||0;
+  }
+  function move(e){
+    if(!active)return;
+    var dx=e.clientX-downX,dy=e.clientY-downY;
+    if(!locked){
+      if(Math.abs(dx)<7&&Math.abs(dy)<7)return;
+      if(Math.abs(dy)>Math.abs(dx)*1.05){active=false;return;}
+      locked=true;
+      if(e.pointerId!==undefined&&canvas.setPointerCapture){
+        try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+      }
+    }
+    if(e.cancelable)e.preventDefault();
+    var tab=tabAtStart,raw=getCandles(key,tab);
+    var count=chartViewCount(tab);
+    if(raw.length<=count)return;
+    // 方向修正：往右滑(dx>0) → offset 增大 → 看到更早的历史；往左滑回到最新。
+    var pointsPerPixel=count/Math.max(1,(area.clientWidth||300));
+    var delta=Math.round(dx*pointsPerPixel);
+    if(delta===0&&Math.abs(dx)>=10)delta=dx>0?1:-1;
+    var maxOffset=Math.max(0,raw.length-count);
+    var next=Math.max(0,Math.min(maxOffset,baseOffset+delta));
+    if(next!==(chartOffsets[key+'_'+tab]||0)){
+      chartOffsets[key+'_'+tab]=next;
+      drawChart(key);
+    }
+  }
+  function end(){active=false;locked=false;}
+  canvas.addEventListener('pointerdown',start,{passive:true});
+  canvas.addEventListener('pointermove',move,{passive:false});
+  canvas.addEventListener('pointerup',end,{passive:true});
+  canvas.addEventListener('pointercancel',end,{passive:true});
+  canvas.addEventListener('lostpointercapture',end,{passive:true});
+});
+window.addEventListener('resize',function(){KEYS.forEach(function(k){drawChart(k)})});
+
+
+
+
+
+// 行情新鲜度：只看最后一次收到价格的时间，不再因为"没收到价格"而重连
+var _lastUpdateTime=0;      // 最后一次收到价格的时刻(ms)，0=还没收到
+var _lastUpdateStr='';      // 最后一次价格对应的时间字符串
+var _openedAt=0;            // 本次连接建立的时刻(ms)
+var _lastQuoteStr='';       // 最后行情时间（服务器时间戳，北京时间，分钟精度）
+var STALE_MS=30*1000;          // 价格连续30秒没有变化 → 视为休市
+var _gotFirst=false;           // 是否已收到第一条价格（作为基准）
+var _lastChangeTime=0;         // 价格最后一次"真的变了"的时刻(ms)
+var _lastVals={};              // 各品种上一次的价格
+
+// 只有价格数值变了才算"有行情"；服务器重复推送同样的价格、或只推时间，都不算
+function noteQuote(data){
+  var keys=['黄金','白银','铂金','钯金'],changed=false,seen=false;
+  keys.forEach(function(k){
+    var v=data[k];
+    if(v===undefined)return;
+    seen=true;
+    if(_lastVals[k]!==undefined&&_lastVals[k]!==v)changed=true;
+    _lastVals[k]=v;
+  });
+  if(!seen)return;
+  if(!_gotFirst){
+    _gotFirst=true;
+    _lastChangeTime=Date.now();   // 刚打开页面先给一整个判定时间（30秒）的宽限，避免行情清淡时先闪一下"休市中"
+    return;
+  }
+  if(changed)_lastChangeTime=Date.now();
+}
+function refreshStatus(){
+  if(!_ws||_ws.readyState!==1)return;   // 未连上时由连接事件负责显示
+  if(!_gotFirst)return;                 // 还没收到第一条价格，保持"已连接"
+  if(Date.now()-_lastChangeTime>STALE_MS){
+    setStatus('','休市中');
+  } else {
+    setStatus('live','实时更新中');
+  }
+}
+
+function attachWsHandlers(ws){
+  ws.onopen=function(){
+    _reconnecting=false;
+    _openedAt=Date.now();
+    if(_gotFirst)refreshStatus();else setStatus('live','已连接');   // 重连时不再闪"已连接"
+  };
+  ws.onmessage=function(e){
+    try{
+      var data=JSON.parse(e.data);
+      noteQuote(data);refreshStatus();
+      if(data['时间']){
+        _lastUpdateTime=Date.now();
+        _lastUpdateStr=data['时间'];
+        if(data['行情时间'])_lastQuoteStr=data['行情时间'];
+        $('lupd').textContent=data['时间'];
+      }
+      if(data['黄金']!==undefined){var g=parseFloat(data['黄金']);lastPrice['gold']=g;lastPrice['au999']=g*0.999;lastPrice['18k']=g*0.7475;}
+      if(data['白银']!==undefined){lastPrice['silver']=parseFloat(data['白银']);}
+      if(data['铂金']!==undefined){var p=parseFloat(data['铂金']);lastPrice['platinum']=p;lastPrice['pt950']=p*0.942;}
+      if(data['钯金']!==undefined){var d=parseFloat(data['钯金']);lastPrice['palladium']=d;lastPrice['pd990']=d*0.95;}
+      KEYS.forEach(function(k){if(lastPrice[k])renderCard(k,lastPrice[k]);});
+    }catch(ex){}
+  };
+  ws.onerror=function(){ if(ws===_ws) setStatus('err','连接错误'); };
+  ws.onclose=function(){
+    if(ws!==_ws)return;          // 旧连接，忽略
+    setStatus('err','重连中...');
+    setTimeout(function(){ if(ws===_ws) connectWS(); },2000);
+  };
+}
+
+// 连接（初始 & 断线重连）
+function connectWS(){
+  setStatus('','连接中');
+  _ws=new WebSocket(WS_URL);
+  _wsLastTime=Date.now();
+  attachWsHandlers(_ws);
+}
+
+// 每3秒刷新一次状态（价格长时间不变 → 休市中）
+setInterval(refreshStatus,3000);
+
+
+loadLocal();
+fetch(FB_SILVER).then(r=>r.json()).then(data=>{if(data)applySilverState(data);});
+connectWS();
+startSSE();
+
+// ===== 大盘指数（腾讯财经行情，script 标签直连，无需服务器）=====
+(function(){
+  var CODES=['sh000001','sz399001','sz399006','sh000688'];
+  function f2(n){return n.toFixed(2);}
+  function sign(n){return (n>0?'+':'')+f2(n);}
+  function paint(code,p,c,r){
+    var box=document.getElementById('idx-'+code);
+    if(!box)return;
+    box.querySelector('.idx-p').textContent=f2(p);
+    box.querySelector('.idx-c').textContent=sign(c)+'  '+sign(r)+'%';
+    box.className='idx '+(c>0?'up':(c<0?'dn':''));
+  }
+  function load(){
+    var sc=document.createElement('script');
+    sc.charset='gbk';
+    function done(){if(sc.parentNode)sc.parentNode.removeChild(sc);}
+    sc.onload=function(){
+      CODES.forEach(function(code){
+        var raw=window['v_'+code];
+        if(typeof raw!=='string')return;
+        var a=raw.split('~');
+        var p=parseFloat(a[3]),c=parseFloat(a[31]),r=parseFloat(a[32]);
+        if(isNaN(p)||isNaN(c)||isNaN(r))return;
+        paint(code,p,c,r);
+      });
+      done();
+    };
+    sc.onerror=done;
+    sc.src='https://qt.gtimg.cn/q='+CODES.join(',')+'&_='+Date.now();
+    document.head.appendChild(sc);
+  }
+  load();
+  setInterval(load,10000);
+})();
+</script>
+</body>
+</html>

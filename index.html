@@ -213,9 +213,123 @@ canvas.chart{position:absolute;inset:0;width:100%;height:100%;}@keyframes fu{0%{
 
 /* ===== 整条底栏（状态+公告）：浅黑底，把上方行情区和下方指数栏区分开 ===== */
 .bottombar{background:#2A2E36;box-shadow:inset 0 -1px 0 rgba(255,255,255,0.08);}
+
+/* ===== 浅色金饰主题（按效果图：仅换色，不改布局与功能） ===== */
+:root{--gold:#C9982B;--gold2:#8A5A12;--gold3:#A8741A;--bg:#F8F4EA;--line:rgba(201,152,43,0.30);--text:#4A3A24;--dim:#7A6A52;}
+html{background:#F8F4EA;}
+body{background:linear-gradient(180deg,#DCEAF3 0,#F3EEDF 150px,#F8F4EA 100%);color:var(--text);}
+body::before{background:radial-gradient(ellipse 120% 40% at 50% -5%,rgba(255,255,255,.75) 0%,transparent 60%);}
+.topbar{border-bottom:1px solid rgba(201,152,43,.35);}
+.brand-zh{color:#5B3A12;}
+.fs-btn{color:#8A6A3A;border-color:rgba(201,152,43,.5);}
+.fs-btn:hover{border-color:#C9982B;color:#8A5A12;}
+.divline-inner{color:#9A8460;}
+
+/* 卡片 */
+.grid{gap:10px;padding:8px 10px;}
+@media(orientation:landscape) and (max-height:480px){.grid{gap:5px;padding:4px 6px;}}
+#col-au999,#col-18k{border:1px solid rgba(214,174,84,.6);border-radius:14px;background:linear-gradient(180deg,#FFFDF7,#FBF4E2);box-shadow:0 2px 10px rgba(160,120,40,.14);}
+#col-pt950,#col-pd990{border:1px solid rgba(160,190,214,.8);border-radius:14px;background:linear-gradient(180deg,#FFFFFF,#EEF4F9);box-shadow:0 2px 10px rgba(80,110,140,.12);}
+#col-au999:hover,#col-18k:hover{background:linear-gradient(180deg,#FFFDF7,#FBF4E2);}
+#col-pt950:hover,#col-pd990:hover{background:linear-gradient(180deg,#FFFFFF,#EEF4F9);}
+.col::before{background:linear-gradient(to right,transparent,rgba(201,152,43,.5),transparent);}
+
+/* 文字颜色 */
+.metal-tag{color:#9A8460;}
+.price-label,.price-unit,.metal-sub{color:#8A7A62;}
+.metal-name.g,.metal-name.a,.metal-name.k,.metal-name.d{color:#7A4A10;}
+.metal-name.s,.metal-name.p{color:#5E6B78;}
+.metal-name.pt,.metal-name.pd{color:#1F3350;}
+#col-au999 .price-cny,#col-18k .price-cny{color:#8B5A12;}
+#col-pt950 .price-cny,#col-pd990 .price-cny{color:#14233A;}
+
+/* 涨跌：红涨绿跌 */
+.price-cny.up{color:#E53935}.price-cny.down{color:#12A05C}
+.chg.up{color:#E53935;background:rgba(229,57,53,.08)}
+.chg.down{color:#12A05C;background:rgba(18,160,92,.09)}
+.chg.neu{color:#8A7A62}
+@keyframes fu{0%{background:rgba(229,57,53,.10)}100%{background:transparent}}
+@keyframes fd{0%{background:rgba(18,160,92,.09)}100%{background:transparent}}
+
+/* 周期按钮 */
+.chart-tabs{border:none;border-radius:999px;background:#F1ECE0;}
+.chart-tab{color:#8A7A62;border-right:1px solid rgba(201,152,43,.18);}
+.chart-tab.active{color:#fff;background:linear-gradient(180deg,#E3B54F,#C9962B);}
+.chart-tab:hover:not(.active){color:#8A5A12;background:rgba(201,152,43,.10);}
+#col-pt950 .chart-tabs,#col-pd990 .chart-tabs{background:#E9EFF5;}
+#col-pt950 .chart-tab,#col-pd990 .chart-tab{border-right-color:rgba(120,150,180,.2);}
+#col-pt950 .chart-tab.active,#col-pd990 .chart-tab.active{color:#1F3350;background:linear-gradient(180deg,#C3D4E3,#A5BBCF);}
+
+/* K线框 */
+#col-au999 .chart-wrap,#col-18k .chart-wrap{background:#FCF7E8;border:1px solid rgba(214,174,84,.5);}
+#col-pt950 .chart-wrap,#col-pd990 .chart-wrap{background:#F7FAFD;border:1px solid rgba(170,195,215,.8);}
+
+/* 底栏 / 指数栏 */
+.bottombar{background:rgba(255,255,255,.88);box-shadow:none;border-top:1px solid rgba(201,152,43,.3);}
+.status-wrap{color:#5A4A32;}
+.lupd{color:#7A6A52;}
+.noticebar{color:#7A6A52;}
+.idxbar{background:rgba(255,255,255,.92);border-top:1px solid rgba(201,152,43,.3);}
+.idx+.idx{border-left:1px solid rgba(201,152,43,.25);}
+.idx-n{color:#5A4A32;opacity:.85;}
+.idx-p,.idx-c{color:#8A7A62;}
+.idx.up .idx-p,.idx.up .idx-c{color:#E53935;}
+.idx.dn .idx-p,.idx.dn .idx-c{color:#12A05C;}
+
+/* 后台入口 / 溢价弹窗 */
+.pwd-input{background:rgba(255,255,255,.88);border:1px solid rgba(201,152,43,.4);color:#7A6A52;}
+.pwd-input::placeholder{color:rgba(122,106,82,.5);}
+.premium-overlay{background:rgba(70,52,24,.45);}
+.premium-panel{background:linear-gradient(135deg,#FFFDF7 0%,#F7EFD9 100%);border:1px solid rgba(201,152,43,.5);box-shadow:0 8px 40px rgba(120,90,30,.25);}
+.pp-title{color:#8A5A12;}
+.pp-row{background:rgba(255,255,255,.7);}
+.pp-metal-name.g,.pp-metal-name.a,.pp-metal-name.k,.pp-metal-name.d{color:#7A4A10;}
+.pp-metal-name.s,.pp-metal-name.p{color:#5E6B78;}
+.pp-metal-name.pt,.pp-metal-name.pd{color:#1F3350;}
+.pp-mode-tab.active{color:#8A5A12;background:rgba(201,152,43,.14);}
+.pp-btn{background:rgba(201,152,43,.10);color:#8A5A12;}
+.pp-btn:hover{background:rgba(201,152,43,.25);border-color:#C9982B;}
+.pp-range.g,.pp-range.s,.pp-range.p,.pp-range.d,.pp-range.a,.pp-range.k,.pp-range.pt,.pp-range.pd{background:linear-gradient(to right,#EADFC3,#C9982B);}
+.pp-range.g::-webkit-slider-thumb,.pp-range.s::-webkit-slider-thumb,.pp-range.p::-webkit-slider-thumb,.pp-range.d::-webkit-slider-thumb,.pp-range.a::-webkit-slider-thumb,.pp-range.k::-webkit-slider-thumb,.pp-range.pt::-webkit-slider-thumb,.pp-range.pd::-webkit-slider-thumb{background:#C9982B;border-color:#fff;box-shadow:0 0 6px rgba(201,152,43,.5);}
+.pp-price{color:#8A5A12;}
+.pp-reset{background:rgba(201,152,43,.10);color:#7A6A52;}
+.pp-val-pct.pos,.pp-val-fix.pos{color:#E53935}.pp-val-pct.neg,.pp-val-fix.neg{color:#12A05C}
+.pp-sync.ok{color:#12A05C}
+
+/* ===== 顶部山水背景（无钻石、无右侧标语） ===== */
+.topbar{background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDI0IDE5MCcgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9J3NreScgeDE9JzAnIHkxPScwJyB4Mj0nMScgeTI9JzAnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nI0QzRTRGMCcvPjxzdG9wIG9mZnNldD0nLjM1JyBzdG9wLWNvbG9yPScjRUVGMUVBJy8+PHN0b3Agb2Zmc2V0PScuNicgc3RvcC1jb2xvcj0nI0Y4RjFERicvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nI0Y0RTJCRScvPjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0nbTEnIHgxPScwJyB5MT0nMCcgeDI9JzAnIHkyPScxJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3AtY29sb3I9JyM4REE3QkQnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3AtY29sb3I9JyNENkUyRUEnLz48L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9J21pc3QnIHgxPScwJyB5MT0nMCcgeDI9JzAnIHkyPScxJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3AtY29sb3I9JyNGNUYwRTInIHN0b3Atb3BhY2l0eT0nMCcvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nI0Y1RjBFMicgc3RvcC1vcGFjaXR5PScxJy8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0nYicgeD0nLTIwJScgeT0nLTUwJScgd2lkdGg9JzE0MCUnIGhlaWdodD0nMjAwJSc+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nNycvPjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSdiMic+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0nMi41Jy8+PC9maWx0ZXI+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9JzEwMjQnIGhlaWdodD0nMTkwJyBmaWxsPSd1cmwoI3NreSknLz4KPGcgZmlsdGVyPSd1cmwoI2IpJyBmaWxsPScjZmZmJyBvcGFjaXR5PScuOSc+PGVsbGlwc2UgY3g9JzIwJyBjeT0nMzInIHJ4PSc1NScgcnk9JzIyJy8+PGVsbGlwc2UgY3g9JzEwMCcgY3k9JzQyJyByeD0nNjInIHJ5PScyMCcvPjxlbGxpcHNlIGN4PScxNjAnIGN5PSc2OCcgcng9JzcwJyByeT0nMTUnLz48L2c+CjxlbGxpcHNlIGN4PSc4MzAnIGN5PScxMDAnIHJ4PScyNjAnIHJ5PSc3MCcgZmlsbD0nI0Y3RTBCMCcgb3BhY2l0eT0nLjYnIGZpbHRlcj0ndXJsKCNiKScvPgo8cGF0aCBkPSdNMCAxOTAgTDAgODAgTDI4IDYyIEw1MiA1MiBMNzIgNjYgTDk2IDg0IEwxMjQgOTggTDE2NSAxMTIgTDIyMCAxMjggTDI5NSAxNTAgTDM0MCAxNjYgTDM0MCAxOTBaJyBmaWxsPSd1cmwoI20xKScvPgo8cGF0aCBkPSdNMCAxMDAgTDMwIDcwIEw1MiA1NiBMNjAgNzIgTDQ2IDkyIEwxOCAxMTJaJyBmaWxsPScjNkY4RkE5JyBvcGFjaXR5PScuMzUnLz4KPHBhdGggZD0nTTEyMCAxOTAgTDE3NSAxMjIgTDI0NSAxMzAgTDM0NSAxNTIgTDQ3MCAxNjggTDQ3MCAxOTBaJyBmaWxsPScjQzVENUUwJyBvcGFjaXR5PScuNTUnLz4KPHBhdGggZD0nTTQyMCAxOTAgTDQ4NSAxNjAgTDU2NSAxNTAgTDY0NSAxNTggTDcyNSAxNzAgTDc2NSAxOTBaJyBmaWxsPScjQzlEM0RBJyBvcGFjaXR5PScuNicvPgo8cGF0aCBkPSdNNTYwIDE5MCBMNjI1IDE2NiBMNzAwIDE2MCBMNzY1IDE3MiBMODI1IDE5MFonIGZpbGw9JyNENUQ5RDUnIG9wYWNpdHk9Jy41Jy8+CjxwYXRoIGQ9J003NjAgMTkwIEw4MzIgMTUyIEw4ODIgMTQ4IEw5MzUgMTYyIEwxMDI0IDEzNyBMMTAyNCAxOTBaJyBmaWxsPScjRDhDN0EyJyBvcGFjaXR5PScuNycvPgo8cGF0aCBkPSdNOTAwIDE5MCBMOTYyIDE2NiBMMTAyNCAxNTIgTDEwMjQgMTkwWicgZmlsbD0nI0M3QjU4Qycgb3BhY2l0eT0nLjcnLz4KPGcgZmlsdGVyPSd1cmwoI2IyKSc+PGVsbGlwc2UgY3g9JzI1JyBjeT0nMTYwJyByeD0nNDUnIHJ5PSczMicgZmlsbD0nIzdGQTI3QicvPjxlbGxpcHNlIGN4PSc4OCcgY3k9JzE3Micgcng9JzQwJyByeT0nMjInIGZpbGw9JyM1RjhCNjInLz48ZWxsaXBzZSBjeD0nOCcgY3k9JzE4Nicgcng9JzUyJyByeT0nMjAnIGZpbGw9JyM0RTdBNTUnLz48ZWxsaXBzZSBjeD0nMTI4JyBjeT0nMTgzJyByeD0nMzYnIHJ5PScxMicgZmlsbD0nIzhEQjA4QScvPjwvZz4KPHJlY3QgeT0nMTM1JyB3aWR0aD0nMTAyNCcgaGVpZ2h0PSc1NScgZmlsbD0ndXJsKCNtaXN0KScvPgo8L3N2Zz4=") center/100% 100% no-repeat;border-bottom:none;}
+.brand-zh{text-shadow:0 1px 0 rgba(255,255,255,.55);}
+.brand-line{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:2px;white-space:nowrap;color:#6B5A40;font-size:11px;letter-spacing:.22em;line-height:1.4;}
+.brand-line::before,.brand-line::after{content:'';width:clamp(24px,12vw,150px);height:1px;background:linear-gradient(to right,transparent,#C9982B);}
+.brand-line::after{background:linear-gradient(to left,transparent,#C9982B);}
+@media(min-width:768px){.brand-line{font-size:13px;}}
+@media(max-width:767px) and (orientation:portrait){.brand-line{font-size:9px;gap:6px;}}
+@media(orientation:landscape) and (max-height:480px){.brand-line{font-size:8px;margin-top:0;}}
+
+/* ===== 底部两个圆角白框（状态条 + 指数栏），状态条顶上不留缝 ===== */
+.grid{padding-bottom:0;}
+.bottombar{width:calc(100% - 20px);margin:0 10px;border:1px solid rgba(214,174,84,.45);border-radius:14px;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(160,120,40,.12);}
+.idxbar{width:calc(100% - 20px);margin:3px 10px 6px;border:1px solid rgba(214,174,84,.45);border-radius:14px;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(160,120,40,.12);}
+@media(orientation:landscape) and (max-height:480px){
+  .bottombar,.idxbar{width:calc(100% - 12px);margin-left:6px;margin-right:6px;border-radius:10px;}
+  .idxbar{margin-top:2px;margin-bottom:3px;}
+}
+
+/* ===== 去掉 REAL·TIME 行；底部落款 + 金叶 ===== */
+.divline{display:none;}
+.idxbar{margin-bottom:2px;padding-bottom:6px;}
+.foot-slogan{position:relative;flex-shrink:0;z-index:1;text-align:center;white-space:nowrap;color:#8A7650;font-size:11px;letter-spacing:.3em;line-height:20px;padding:4px 0 calc(4px + env(safe-area-inset-bottom,0px));background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDI0IDQwJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSdub25lJz4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSd3JyB4MT0nMCcgeTE9JzAnIHgyPScxJyB5Mj0nMCc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLWNvbG9yPScjRTlEMTk5JyBzdG9wLW9wYWNpdHk9Jy43NScvPjxzdG9wIG9mZnNldD0nLjUnIHN0b3AtY29sb3I9JyNGNkVCQ0InIHN0b3Atb3BhY2l0eT0nLjMnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3AtY29sb3I9JyNFOUQxOTknIHN0b3Atb3BhY2l0eT0nLjcnLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHBhdGggZD0nTTAgNDAgTDAgMTQgQzEyMCA0IDIyMCAzMCAzODAgMjggQzU2MCAyNiA3MDAgNiA4NjAgMTYgQzk0MCAyMSA5OTAgMTQgMTAyNCA4IEwxMDI0IDQwWicgZmlsbD0ndXJsKCN3KScvPgo8cGF0aCBkPSdNMCAyNCBDMTQwIDEyIDI0MCAzNiA0MDAgMzQgQzU4MCAzMiA3MjAgMTYgODgwIDI0IEM5NTAgMjggMTAwMCAyMiAxMDI0IDE4JyBmaWxsPSdub25lJyBzdHJva2U9JyNEOUI4NjMnIHN0cm9rZS13aWR0aD0nMScgb3BhY2l0eT0nLjU1Jy8+CjxwYXRoIGQ9J00wIDMyIEMxNjAgMjIgMjYwIDQwIDQyMCAzOCBDNjAwIDM2IDc0MCAyNiA5MDAgMzIgQzk2MCAzNCAxMDAwIDMwIDEwMjQgMjgnIGZpbGw9J25vbmUnIHN0cm9rZT0nI0UzQzc3RScgc3Ryb2tlLXdpZHRoPScuOCcgb3BhY2l0eT0nLjQ1Jy8+Cjwvc3ZnPg==") center bottom/100% 100% no-repeat;}
+.foot-slogan::before{content:'—';margin-right:.6em;}
+.foot-slogan::after{content:'—';margin-left:.6em;}
+.foot-leaf{display:none;}
+body::after{content:'';position:fixed;right:0;bottom:0;width:66px;height:110px;background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMjAwJz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0nZycgeDE9JzAnIHkxPScxJyB4Mj0nMCcgeTI9JzAnPjxzdG9wIG9mZnNldD0nMCcgc3RvcC1jb2xvcj0nI0I5OEEyQycvPjxzdG9wIG9mZnNldD0nLjU1JyBzdG9wLWNvbG9yPScjRTJDMjc1Jy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjRjZFN0JDJy8+PC9saW5lYXJHcmFkaWVudD4KPGcgaWQ9J2xmJz48cGF0aCBkPSdNMCAwIEM3IC0xMCA3IC0zNiAwIC01NiBDLTcgLTM2IC03IC0xMCAwIDBaJyBmaWxsPSd1cmwoI2cpJyBzdHJva2U9JyNCOThBMkMnIHN0cm9rZS1vcGFjaXR5PScuNDUnIHN0cm9rZS13aWR0aD0nLjYnIGZpbGwtb3BhY2l0eT0nLjg1Jy8+PHBhdGggZD0nTTAgLTIgTDAgLTUwJyBzdHJva2U9JyNmZmYnIHN0cm9rZS1vcGFjaXR5PScuNTUnIHN0cm9rZS13aWR0aD0nLjYnLz48L2c+CjwvZGVmcz4KPHBhdGggZD0nTTEwNiAyMDAgQzk3IDE1MCAxMDIgMTAwIDk2IDYnIGZpbGw9J25vbmUnIHN0cm9rZT0nI0I5OEEyQycgc3Ryb2tlLXdpZHRoPScxLjQnIHN0cm9rZS1vcGFjaXR5PScuNzUnLz4KPHVzZSBocmVmPScjbGYnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDEwMyAxOTYpIHJvdGF0ZSgtNjIpIHNjYWxlKDEuMCknLz48dXNlIGhyZWY9JyNsZicgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMTAxIDE3Nikgcm90YXRlKDUwKSBzY2FsZSgwLjkpJy8+PHVzZSBocmVmPScjbGYnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDk5IDE1Nikgcm90YXRlKC01Mikgc2NhbGUoMS4wKScvPjx1c2UgaHJlZj0nI2xmJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg5OSAxMzQpIHJvdGF0ZSg0Nikgc2NhbGUoMC44NSknLz48dXNlIGhyZWY9JyNsZicgdHJhbnNmb3JtPSd0cmFuc2xhdGUoOTkgMTEyKSByb3RhdGUoLTQ4KSBzY2FsZSgwLjk1KScvPjx1c2UgaHJlZj0nI2xmJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg5OCA5MCkgcm90YXRlKDQyKSBzY2FsZSgwLjgpJy8+PHVzZSBocmVmPScjbGYnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDk2IDY4KSByb3RhdGUoLTQ0KSBzY2FsZSgwLjg1KScvPjx1c2UgaHJlZj0nI2xmJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg5NSA0Nikgcm90YXRlKDM4KSBzY2FsZSgwLjcpJy8+PHVzZSBocmVmPScjbGYnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDk0IDI2KSByb3RhdGUoLTM2KSBzY2FsZSgwLjY1KScvPjx1c2UgaHJlZj0nI2xmJyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSg5NCA4KSByb3RhdGUoLTQpIHNjYWxlKDAuNiknLz4KPC9zdmc+") right bottom/contain no-repeat;pointer-events:none;z-index:1;}
+@media(orientation:landscape) and (max-height:480px){
+  .foot-slogan{font-size:8px;line-height:12px;padding:1px 0 2px;}
+  body::after{width:36px;height:60px;}
+}
 </style></head><body>
 <div class="topbar">
-  <div class="brand-center"><div class="brand-zh">老银牌银饰 · 今日参考价</div></div>
+  <div class="brand-center"><div class="brand-zh">老银牌银饰 · 今日参考价</div><div class="brand-line">专业 · 诚信 · 透明 · 黄金属回收</div></div>
   <button class="fs-btn" onclick="toggleFS()" title="全屏">[ ]</button>
 </div>
 <div class="divline"><span class="divline-inner">REAL · TIME · MARKET · DATA</span></div>
@@ -255,6 +369,7 @@ canvas.chart{position:absolute;inset:0;width:100%;height:100%;}@keyframes fu{0%{
   <div class="noticebar" id="noticebar" style="display:none"><span class="notice-icon">📢</span><div class="notice-wrap"><span class="notice-text" id="noticeText"></span></div></div>
 </div>
 <div class="idxbar" id="idxbar"><div class="idx" id="idx-sh000001"><div class="idx-n">上证指数</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sz399001"><div class="idx-n">深证成指</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sz399006"><div class="idx-n">创业板指</div><div class="idx-p">--</div><div class="idx-c">--</div></div><div class="idx" id="idx-sh000688"><div class="idx-n">科创50</div><div class="idx-p">--</div><div class="idx-c">--</div></div></div>
+<div class="foot-slogan">诚信交易 · 拒绝套路</div>
 <div class="hidden-trigger" onclick="triggerStep1()"></div>
 <div class="pwd-wrap" id="pwdWrap"><input class="pwd-input" id="pwdInput" type="password" placeholder="···" maxlength="20" oninput="checkPwd()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></div>
 <div class="premium-overlay" id="overlay" onclick="overlayClick(event)">
@@ -269,11 +384,11 @@ canvas.chart{position:absolute;inset:0;width:100%;height:100%;}@keyframes fu{0%{
     <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name k">18K</div><div class="pp-metal-sub">18K金</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-18k" onclick="setMode('18k','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-18k" onclick="setMode('18k','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-18k"><button class="pp-btn" onclick="stepPct('18k',-0.5)">−</button><input type="range" class="pp-range k" id="sp-18k" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('18k')"><button class="pp-btn" onclick="stepPct('18k',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-18k"><button class="pp-btn" onclick="stepFix('18k',-10)">−</button><input type="range" class="pp-range k" id="sf-18k" min="-500" max="200" step="1" value="0" oninput="onSlideFix('18k')"><button class="pp-btn" onclick="stepFix('18k',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-18k">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-18k">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-18k">--</div><button class="pp-reset" onclick="resetOne('18k')">归零</button></div></div>
     <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name pt">Pt950</div><div class="pp-metal-sub">铂950</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-pt950" onclick="setMode('pt950','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-pt950" onclick="setMode('pt950','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-pt950"><button class="pp-btn" onclick="stepPct('pt950',-0.5)">−</button><input type="range" class="pp-range pt" id="sp-pt950" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('pt950')"><button class="pp-btn" onclick="stepPct('pt950',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-pt950"><button class="pp-btn" onclick="stepFix('pt950',-10)">−</button><input type="range" class="pp-range pt" id="sf-pt950" min="-500" max="200" step="1" value="0" oninput="onSlideFix('pt950')"><button class="pp-btn" onclick="stepFix('pt950',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-pt950">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-pt950">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-pt950">--</div><button class="pp-reset" onclick="resetOne('pt950')">归零</button></div></div>
     <div class="pp-row"><div class="pp-metal"><div class="pp-metal-name pd">Pd990</div><div class="pp-metal-sub">钯990</div></div><div class="pp-main"><div class="pp-mode-tabs"><button class="pp-mode-tab active" id="mt-pct-pd990" onclick="setMode('pd990','pct')">百分比 %</button><button class="pp-mode-tab" id="mt-fix-pd990" onclick="setMode('pd990','fix')">固定加减 ¥</button></div><div class="pp-pct-ctrl" id="pc-pd990"><button class="pp-btn" onclick="stepPct('pd990',-0.5)">−</button><input type="range" class="pp-range pd" id="sp-pd990" min="-80" max="50" step="0.5" value="0" oninput="onSlidePct('pd990')"><button class="pp-btn" onclick="stepPct('pd990',0.5)">+</button></div><div class="pp-fixed-ctrl pp-hidden" id="fc-pd990"><button class="pp-btn" onclick="stepFix('pd990',-10)">−</button><input type="range" class="pp-range pd" id="sf-pd990" min="-500" max="200" step="1" value="0" oninput="onSlideFix('pd990')"><button class="pp-btn" onclick="stepFix('pd990',10)">+</button></div></div><div class="pp-info"><div class="pp-val-pct zero" id="vp-pd990">0.00%</div><div class="pp-val-fix pp-hidden zero" id="vf-pd990">0 元/克</div><div class="pp-price-label">当前回收价</div><div class="pp-price" id="pv-pd990">--</div><button class="pp-reset" onclick="resetOne('pd990')">归零</button></div></div>
-    <div style="margin:8px 0 4px;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;">📢 公告内容（留空则不显示）</label><br><input id="noticeInput" type="text" maxlength="100" placeholder="输入公告内容..." style="width:100%;margin-top:4px;background:rgba(10,22,40,0.8);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:12px;padding:6px 10px;outline:none;font-family:inherit;box-sizing:border-box;"></div>
+    <div style="margin:8px 0 4px;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;">📢 公告内容（留空则不显示）</label><br><input id="noticeInput" type="text" maxlength="100" placeholder="输入公告内容..." style="width:100%;margin-top:4px;background:rgba(255,255,255,0.9);border:1px solid var(--line);border-radius:6px;color:var(--text);font-size:12px;padding:6px 10px;outline:none;font-family:inherit;box-sizing:border-box;"></div>
     <div style="margin:6px 0 4px;display:flex;align-items:center;gap:10px;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;white-space:nowrap;">🐢 滚动速度</label><input id="noticeSpeed" type="range" min="5" max="60" value="25" style="flex:1;height:3px;accent-color:var(--gold);cursor:pointer;"><label style="font-size:10px;color:var(--dim);letter-spacing:.1em;white-space:nowrap;">🐇</label></div>
     <div class="pp-sync" id="syncTip"></div>
     <div class="pp-footer">调节后点下方按钮 · 所有访客价格同步更新</div>
-    <div style="text-align:center;margin-top:10px;"><button onclick="saveToFirebase()" style="background:linear-gradient(135deg,#0277BD,#4FC3F7);border:none;color:#0A1628;padding:8px 32px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.1em;font-family:'Noto Serif SC',serif;">保存并同步所有人</button></div>
+    <div style="text-align:center;margin-top:10px;"><button onclick="saveToFirebase()" style="background:linear-gradient(180deg,#E3B54F,#C9962B);border:none;color:#fff;padding:8px 32px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.1em;font-family:'Noto Serif SC',serif;">保存并同步所有人</button></div>
   </div>
 </div><script>
 var WS_URL='ws://rtjqtgw.ytj9999.com:7443/gateway';
@@ -844,7 +959,7 @@ function drawChart(key){
   var ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
   ctx.clearRect(0,0,W,H);
   if(cs.length<1){
-    ctx.strokeStyle='rgba(79,195,247,0.12)';ctx.lineWidth=0.6;
+    ctx.strokeStyle='rgba(176,138,60,0.28)';ctx.lineWidth=0.6;
     ctx.beginPath();ctx.moveTo(6,H*0.55);ctx.lineTo(W-6,H*0.55);ctx.stroke();
     return;
   }
@@ -864,18 +979,18 @@ function drawChart(key){
   function yp(v){return pad.t+(1-(v-minV)/range)*gH;}
   var n=cs.length,slot=gW/Math.max(n,viewCount),bw=Math.max(1.4,Math.min(6,slot*0.62));
   if(lineMode){
-    var up0=cs[n-1].c>=cs[0].c,lc=up0?'#4DCB82':'#E05555';
+    var up0=cs[n-1].c>=cs[0].c,lc=up0?'#E53935':'#12A05C';
     ctx.save();
     ctx.beginPath();
     for(var j=0;j<n;j++){var lx0=pad.l+slot*(j+0.5),ly0=yp(cs[j].c);if(j===0)ctx.moveTo(lx0,ly0);else ctx.lineTo(lx0,ly0);}
     ctx.strokeStyle=lc;ctx.lineWidth=1.2;ctx.lineJoin='round';ctx.stroke();
     ctx.lineTo(pad.l+slot*(n-0.5),pad.t+gH);ctx.lineTo(pad.l+slot*0.5,pad.t+gH);ctx.closePath();
     var gr=ctx.createLinearGradient(0,pad.t,0,pad.t+gH);
-    gr.addColorStop(0,up0?'rgba(77,203,130,0.22)':'rgba(224,85,85,0.22)');gr.addColorStop(1,'rgba(10,22,40,0)');
+    gr.addColorStop(0,up0?'rgba(229,57,53,0.18)':'rgba(18,160,92,0.18)');gr.addColorStop(1,'rgba(255,255,255,0)');
     ctx.fillStyle=gr;ctx.fill();
     ctx.restore();
   }else for(var i=0;i<n;i++){
-    var c=cs[i],up=c.c>=c.o,col=up?'#4DCB82':'#E05555';
+    var c=cs[i],up=c.c>=c.o,col=up?'#E53935':'#12A05C';
     var x=pad.l+slot*(i+0.5);
     ctx.strokeStyle=col;ctx.fillStyle=col;ctx.lineWidth=slot<3?0.9:1.2;
     ctx.beginPath();ctx.moveTo(x,yp(c.h));ctx.lineTo(x,yp(c.l));ctx.stroke();
@@ -889,11 +1004,11 @@ function drawChart(key){
     var x1=toRight?x+8:x-8,tx=toRight?x+10:x-10;
     if(!toRight&&tx-tw<2)tx=tw+2;
     ctx.save();
-    ctx.strokeStyle='rgba(227,242,253,0.7)';ctx.lineWidth=0.8;
+    ctx.strokeStyle='rgba(122,96,60,0.55)';ctx.lineWidth=0.8;
     ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x1,y);ctx.stroke();
     ctx.textAlign=toRight?'left':'right';ctx.textBaseline='middle';
-    ctx.lineWidth=2.5;ctx.strokeStyle='rgba(10,22,40,0.9)';ctx.strokeText(txt,tx,y);
-    ctx.fillStyle='#E3F2FD';ctx.fillText(txt,tx,y);
+    ctx.lineWidth=2.5;ctx.strokeStyle='rgba(255,252,243,0.95)';ctx.strokeText(txt,tx,y);
+    ctx.fillStyle='#5A4630';ctx.fillText(txt,tx,y);
     ctx.restore();
   }
   if(hiV>loV){
@@ -904,15 +1019,15 @@ function drawChart(key){
   if(offset===0){
     var ly=yp(lastV);
     ctx.save();
-    ctx.setLineDash([3,3]);ctx.strokeStyle='rgba(129,212,250,0.6)';ctx.lineWidth=0.8;
+    ctx.setLineDash([3,3]);ctx.strokeStyle='rgba(201,152,43,0.75)';ctx.lineWidth=0.8;
     ctx.beginPath();ctx.moveTo(pad.l,ly);ctx.lineTo(W-boxW-1,ly);ctx.stroke();
     ctx.setLineDash([]);
     var bx=W-boxW-1,by=Math.max(1,Math.min(H-boxH-1,ly-boxH/2));
-    ctx.fillStyle='#0A1628';ctx.strokeStyle='rgba(129,212,250,0.8)';ctx.lineWidth=0.9;
+    ctx.fillStyle='#FFF8E1';ctx.strokeStyle='rgba(201,152,43,0.9)';ctx.lineWidth=0.9;
     ctx.beginPath();
     if(ctx.roundRect)ctx.roundRect(bx,by,boxW,boxH,3);else ctx.rect(bx,by,boxW,boxH);
     ctx.fill();ctx.stroke();
-    ctx.fillStyle='#E3F2FD';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillStyle='#5A4630';ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(lastV.toFixed(2),bx+boxW/2,by+boxH/2+0.5);
     ctx.restore();
   }
